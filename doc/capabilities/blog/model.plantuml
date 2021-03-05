@@ -8,16 +8,17 @@ class Blog {
   name
 }
 
-
 class Story {
 }
 
-class StoryContent {
-  language
-  content
+
+class Channel {
+  name
 }
 
+
 Author -> Blog
+Blog -> "*" Channel
 Blog -> "*" Story
-Story -> "*" StoryContent
+Story -> Channel: is-published-to
 @enduml
