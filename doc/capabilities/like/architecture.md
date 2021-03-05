@@ -1,11 +1,11 @@
 ![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/wutsi/wutsi-domain/main/doc/capabilities/like/architecture.plantuml)
 
 # Like Widget
-The Like widget is a javascript widget that can be embeded in any website to display the like badge.
+The Like widget is a javascript code snippet that can be embeded in any website to display the like badge.
 The snipped of code would like like:
 
 ``` html
-<span data-wutsi-component='like' data-url='https://www.foo.com'></span>
+<span data-wutsi-component='like' ....></span>
 <script type='text/javascript' src='https://www.wutsi.com/widgets/like.js' />
 ```
 
@@ -18,3 +18,5 @@ This API expose REST endpoints to:
 
 This endpoint can be used either by wutsi widgets, or 3rd party applications
 
+## Events Endpoint
+Events are used to send notification when new likes/unlike have been issued.
