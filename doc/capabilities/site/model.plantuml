@@ -1,0 +1,16 @@
+@startuml
+class Site {
+  domain_name
+}
+
+class Configuration {
+}
+
+class Capability {
+  urn
+}
+
+
+Site -> Configuration
+Site -->"*" Capability
+@enduml
