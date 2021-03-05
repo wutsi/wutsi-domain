@@ -1,0 +1,18 @@
+@startuml
+class Link {
+  url
+}
+
+
+class Like {
+  likeDateTime 
+}
+
+class Reader {
+  deviceId
+  userId
+}
+
+Link -> "*" Like
+Like "*" -> Reader
+@enduml
