@@ -1,6 +1,2 @@
 # Capabilities
-[Blog]
-[Like]
-[Comment]
-[Follow]
-[Subscription]
+- [Like](doc/capabilities/like/README.md)
