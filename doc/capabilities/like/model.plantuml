@@ -3,6 +3,8 @@ class Link {
   url
 }
 
+class Site {
+}
 
 class Like {
   likeDateTime 
@@ -14,5 +16,6 @@ class Reader {
 }
 
 Link -> "*" Like
+Link "*" --> Site
 Like "*" -> Reader
 @enduml
