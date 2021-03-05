@@ -1,0 +1,20 @@
+@startuml
+class Link {
+  url
+}
+
+
+class Comment {
+  creationDateTime
+  updateDateTime
+  text
+}
+
+class Reader {
+  deviceId
+  userId
+}
+
+Link -> "*" Comment
+Comment "*" -> Reader
+@enduml
