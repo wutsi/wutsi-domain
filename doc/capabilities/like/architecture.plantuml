@@ -1,40 +1,35 @@
 @startuml
 Actor reader
-() REST
-() Events
 
 
-node "Web App" {
+node "Like Capability" {
+ () REST
+ () Events
+
+ node "Web App" {
   [Like Widget]
   reader --> [Like Widget]
-}
+ }
 
-node "Mobile App" {
-  [Like Mobile Widget]
-  reader --> [Like Mobile Widget]
-}
+ 
+ node "Like Service" {
+  [Like Widget] -> REST
+  REST -- [Like API]
+  [Like API] - Events
 
-
-
-node "Wutsi" {
- [Like Widget] --> REST
- [Like Mobile Widget] --> REST
- REST - [Like API]
- [Like API] - Events
-
- database "DB"{
+  database "DB"{
    [LikeDB]
    [Like API] --> [LikeDB]
- }
+  }
 
- database "Cache"{
+  database "Cache"{
    [LikeCache]
    [Like API] --> [LikeCache]
+  }
  }
+
 }
 
-node "3rd Party" {
-  [3rd Party Service]
-  [3rd Party Service] -> Events
-}
+Events --> [3rd Party Service]
+[3rd Party App] --> REST
 @enduml
