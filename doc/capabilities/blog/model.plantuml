@@ -8,6 +8,9 @@ class Blog {
   name
 }
 
+class Site {
+}
+
 class Story {
 }
 
@@ -19,6 +22,7 @@ class Channel {
 
 Author -> Blog
 Blog -> "*" Channel
+Blog "*" --> Site
 Blog -> "*" Story
 Story -> Channel: is-published-to
 @enduml
