@@ -12,7 +12,12 @@ class Blog {
 class Story {
 }
 
+class StoryContent {
+  language
+  content
+}
 
 Author -> Blog
 Blog -> "*" Story
+Story -> "*" StoryContent
 @enduml
