@@ -1,0 +1,18 @@
+@startuml
+class Author {
+  fullName
+  email
+}
+
+class Blog {
+  name
+}
+
+
+class Story {
+}
+
+
+Author -> Blog
+Blog -> "*" Story
+@enduml
