@@ -4,8 +4,17 @@
 The Like widget is a javascript widget that can be embeded in any website to display the like badge.
 The snipped of code would like like:
 
-```
+``` html
 <span data-wutsi-component='like' data-url='https://www.foo.com'></span>
 <script type='text/javascript' src='https://www.wutsi.com/widgets/like.js' />
 ```
+
+# Like API
+## REST Endpoint
+This API expose REST endpoints to:
+- Like a link
+- Unlike a link
+- Return the like count of a given link
+
+This endpoint can be used either by wutsi widgets, or 3rd party applications
 
