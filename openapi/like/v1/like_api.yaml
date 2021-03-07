@@ -1,0 +1,98 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Like API"
+  description: This api used for linking links
+  version: "1.0"
+
+paths:
+  /v1/like:
+    post:
+      summary: "Like a link"
+      requestBody:
+        description: Like request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLikeRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateLikeResponse"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key: []
+      tags:
+        - Like
+
+  /v1/like/{id}:
+    delete:
+      summary: "Unlike a link"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          description: Success
+      security:
+        - api_key: []
+      tags:
+        - Like
+
+    get:
+      summary: "Returns like information of a link"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "models/GetLikeResponse.yaml"
+        404:
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key: []
+      tags:
+        - Like
+
+components:
+  schemas:
+    CreateLikeRequest:
+      $ref: "models/CreateLikeRequest.yaml"
+    CreateLikeResponse:
+      $ref: "models/CreateLikeResponse.yaml"
+    ErrorResponse:
+      $ref: "../../common/v1/ErrorResponse.yaml"
+
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-wutsi-api-key
