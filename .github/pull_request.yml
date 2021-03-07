@@ -23,4 +23,5 @@ jobs:
 
       - name: validate
         run: |
+          echo validating apis
           find . -type f -iname '*_api.yaml' -exec swagger-cli validate "{}" \;
