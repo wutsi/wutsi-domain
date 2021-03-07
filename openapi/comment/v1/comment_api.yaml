@@ -14,7 +14,7 @@ paths:
   /v1/comments:
     post:
       operationId: "create"
-      summary: "comment a link"
+      summary: "Add a comment to a link"
       requestBody:
         description: comment request
         required: true
@@ -43,7 +43,7 @@ paths:
   /v1/comments/stats:
     get:
       operationId: "stats"
-      summary: "Returns comment statistics of a given link"
+      summary: "Returns the comment statistics of a link"
       parameters:
         - in: path
           name: link
@@ -75,6 +75,37 @@ paths:
         - comment
 
   /v1/comment/{id}:
+    post:
+      operationId: "update"
+      summary: "Update a comment"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+            format: int64
+      requestBody:
+        description: comment request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommentRequest'
+      responses:
+        200:
+          description: Success
+        404:
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key: []
+      tags:
+        - comment
+
     delete:
       operationId: "delete"
       summary: "Delete a comment"
@@ -99,10 +130,12 @@ components:
       $ref: "models/CreateCommentRequest.yaml"
     CreateCommentResponse:
       $ref: "models/CreateCommentResponse.yaml"
-    GetStatsResponse:
-      $ref: "models/GetStatsResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
+    GetStatsResponse:
+      $ref: "models/GetStatsResponse.yaml"
+    UpdateCommentRequest:
+      $ref: "models/UpdateCommentRequest.yaml"
 
   securitySchemes:
     api_key:
