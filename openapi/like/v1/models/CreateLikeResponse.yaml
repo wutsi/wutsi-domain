@@ -1,0 +1,6 @@
+# CreateLikeResponse
+type: object
+properties:
+  likeId:
+    type: number
+    format: int64
