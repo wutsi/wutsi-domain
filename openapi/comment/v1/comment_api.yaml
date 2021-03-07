@@ -40,9 +40,10 @@ paths:
       tags:
         - comment
 
+  /v1/comments/stats:
     get:
-      operationId: "search"
-      summary: "Returns comment details of a link"
+      operationId: "stats"
+      summary: "Returns comment statistics of a given link"
       parameters:
         - in: path
           name: link
@@ -55,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetCommentResponse'
+                $ref: '#/components/schemas/GetStatsResponse'
         404:
           description: Link not found
           content:
@@ -94,12 +95,12 @@ paths:
 
 components:
   schemas:
-    CreatecommentRequest:
+    CreateCommentRequest:
       $ref: "models/CreateCommentRequest.yaml"
-    CreatecommentResponse:
+    CreateCommentResponse:
       $ref: "models/CreateCommentResponse.yaml"
-    GetcommentResponse:
-      $ref: "models/GetCommentResponse.yaml"
+    GetStatsResponse:
+      $ref: "models/GetStatsResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
 

@@ -1,4 +1,4 @@
-# CreateLikeResponse
+# CreateCommentResponse
 type: object
 properties:
   commentId:

@@ -1,4 +1,4 @@
-# CreateLikeRequest
+# CreateCommentRequest
 type: object
 properties:
   text:

@@ -40,9 +40,10 @@ paths:
       tags:
         - Like
 
+  /v1/likes/stats:
     get:
-      operationId: "search"
-      summary: "Returns like details for a given link"
+      operationId: "stats"
+      summary: "Returns like statistics for a given link"
       parameters:
         - in: query
           name: link
@@ -55,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchLikeResponse'
+                $ref: '#/components/schemas/GetStatsResponse'
         404:
           description: Link is not valid
           content:
@@ -98,8 +99,8 @@ components:
       $ref: "models/CreateLikeRequest.yaml"
     CreateLikeResponse:
       $ref: "models/CreateLikeResponse.yaml"
-    SearchLikeResponse:
-      $ref: "models/SearchLikeResponse.yaml"
+    GetStatsResponse:
+      $ref: "models/GetStatsResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
 
