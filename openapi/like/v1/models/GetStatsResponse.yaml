@@ -1,0 +1,11 @@
+# GetStatsResponse
+type: object
+properties:
+  link:
+    type: string
+    format: url
+  count:
+    type: number
+    format: int64
+  countText:
+    type: string

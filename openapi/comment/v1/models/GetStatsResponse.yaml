@@ -1,4 +1,4 @@
-# GetLikeResponse
+# GetStatsResponse
 type: object
 properties:
   link:
@@ -9,5 +9,3 @@ properties:
     format: int64
   countText:
     type: string
-  liked:
-    type: boolean

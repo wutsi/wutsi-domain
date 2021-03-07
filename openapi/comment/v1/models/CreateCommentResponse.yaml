@@ -1,0 +1,6 @@
+# CreateCommentResponse
+type: object
+properties:
+  commentId:
+    type: number
+    format: int64
