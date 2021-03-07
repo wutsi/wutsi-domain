@@ -4,9 +4,16 @@ info:
   description: This api used for linking links
   version: "1.0"
 
+servers:
+  - url: https://com-wutsi-prod-like.herokuapp.com
+    description: Production server
+  - url: https://com-wutsi-int-like.herokuapp.com
+    description: Sandbox server
+
 paths:
   /v1/like:
     post:
+      operationId: "create"
       summary: "Like a link"
       requestBody:
         description: Like request
@@ -35,6 +42,7 @@ paths:
 
   /v1/like/{id}:
     delete:
+      operationId: "delete"
       summary: "Unlike a link"
       parameters:
         - in: path
@@ -42,6 +50,7 @@ paths:
           required: true
           schema:
             type: number
+            format: int64
       responses:
         200:
           description: Success
@@ -51,6 +60,7 @@ paths:
         - Like
 
     get:
+      operationId: "get"
       summary: "Returns like information of a link"
       parameters:
         - in: path
@@ -58,13 +68,14 @@ paths:
           required: true
           schema:
             type: number
+            format: int64
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: "models/GetLikeResponse.yaml"
+                $ref: '#/components/schemas/GetLikeResponse'
         404:
           description: Link not found
           content:
@@ -88,6 +99,8 @@ components:
       $ref: "models/CreateLikeRequest.yaml"
     CreateLikeResponse:
       $ref: "models/CreateLikeResponse.yaml"
+    GetLikeResponse:
+      $ref: "models/GetLikeResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
 
