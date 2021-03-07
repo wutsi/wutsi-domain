@@ -1,6 +1,7 @@
-# CreateCommentRequest
+# UpdateCommentRequest
 type: object
 properties:
   text:
     type: string
-    format: uri
+required:
+  - text

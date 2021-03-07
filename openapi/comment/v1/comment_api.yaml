@@ -85,6 +85,13 @@ paths:
           schema:
             type: number
             format: int64
+      requestBody:
+        description: comment request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommentRequest'
       responses:
         200:
           description: Success
@@ -123,10 +130,12 @@ components:
       $ref: "models/CreateCommentRequest.yaml"
     CreateCommentResponse:
       $ref: "models/CreateCommentResponse.yaml"
-    GetStatsResponse:
-      $ref: "models/GetStatsResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
+    GetStatsResponse:
+      $ref: "models/GetStatsResponse.yaml"
+    UpdateCommentRequest:
+      $ref: "models/UpdateCommentRequest.yaml"
 
   securitySchemes:
     api_key:

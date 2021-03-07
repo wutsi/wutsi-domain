@@ -99,10 +99,10 @@ components:
       $ref: "models/CreateLikeRequest.yaml"
     CreateLikeResponse:
       $ref: "models/CreateLikeResponse.yaml"
-    GetStatsResponse:
-      $ref: "models/GetStatsResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
+    GetStatsResponse:
+      $ref: "models/GetStatsResponse.yaml"
 
   securitySchemes:
     api_key:
