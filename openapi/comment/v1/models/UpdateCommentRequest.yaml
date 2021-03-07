@@ -1,10 +1,6 @@
 # CreateCommentRequest
 type: object
 properties:
-  link:
-    type: string
   text:
     type: string
     format: uri
-required:
-  - link

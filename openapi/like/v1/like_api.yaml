@@ -14,7 +14,7 @@ paths:
   /v1/likes:
     post:
       operationId: "create"
-      summary: "Add a new Like on a given link"
+      summary: "Add a Like to a link"
       requestBody:
         description: Like request
         required: true
@@ -43,7 +43,7 @@ paths:
   /v1/likes/stats:
     get:
       operationId: "stats"
-      summary: "Returns like statistics for a given link"
+      summary: "Returns the Like statistics of a link"
       parameters:
         - in: query
           name: link
