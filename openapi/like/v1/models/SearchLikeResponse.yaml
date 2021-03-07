@@ -1,0 +1,7 @@
+# GetLikeResponse
+type: object
+properties:
+  likes:
+    type: array
+    items:
+      $ref: "./Like.yaml"

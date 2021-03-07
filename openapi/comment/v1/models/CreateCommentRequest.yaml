@@ -1,0 +1,8 @@
+# CreateLikeRequest
+type: object
+properties:
+  text:
+    type: string
+    format: uri
+required:
+  - link

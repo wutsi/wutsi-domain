@@ -1,34 +1,34 @@
 openapi: "3.0.0"
 info:
-  title: "Wutsi Like API"
-  description: This api used for managing likes on links
+  title: "Wutsi Comment API"
+  description: This api managing comments on links
   version: "1.0"
 
 servers:
-  - url: https://com-wutsi-prod-like.herokuapp.com
+  - url: https://com-wutsi-prod-comment.herokuapp.com
     description: Production server
-  - url: https://com-wutsi-int-like.herokuapp.com
+  - url: https://com-wutsi-int-comment.herokuapp.com
     description: Sandbox server
 
 paths:
-  /v1/likes:
+  /v1/comments:
     post:
       operationId: "create"
-      summary: "Add a new Like on a given link"
+      summary: "comment a link"
       requestBody:
-        description: Like request
+        description: comment request
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateLikeRequest'
+              $ref: '#/components/schemas/CreateCommentRequest'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateLikeResponse"
+                $ref: "#/components/schemas/CreateCommentResponse"
         default:
           description: Error
           content:
@@ -38,13 +38,13 @@ paths:
       security:
         - api_key: []
       tags:
-        - Like
+        - comment
 
     get:
       operationId: "search"
-      summary: "Returns like details for a given link"
+      summary: "Returns comment details of a link"
       parameters:
-        - in: query
+        - in: path
           name: link
           required: true
           schema:
@@ -55,9 +55,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchLikeResponse'
+                $ref: '#/components/schemas/GetCommentResponse'
         404:
-          description: Link is not valid
+          description: Link not found
           content:
             application/json:
               schema:
@@ -71,12 +71,12 @@ paths:
       security:
         - api_key: []
       tags:
-        - Like
+        - comment
 
-  /v1/likes/{id}:
+  /v1/comment/{id}:
     delete:
       operationId: "delete"
-      summary: "Unlike a link"
+      summary: "Delete a comment"
       parameters:
         - in: path
           name: id
@@ -90,16 +90,16 @@ paths:
       security:
         - api_key: []
       tags:
-        - Like
+        - comment
 
 components:
   schemas:
-    CreateLikeRequest:
-      $ref: "models/CreateLikeRequest.yaml"
-    CreateLikeResponse:
-      $ref: "models/CreateLikeResponse.yaml"
-    SearchLikeResponse:
-      $ref: "models/SearchLikeResponse.yaml"
+    CreatecommentRequest:
+      $ref: "models/CreateCommentRequest.yaml"
+    CreatecommentResponse:
+      $ref: "models/CreateCommentResponse.yaml"
+    GetcommentResponse:
+      $ref: "models/GetCommentResponse.yaml"
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
 
