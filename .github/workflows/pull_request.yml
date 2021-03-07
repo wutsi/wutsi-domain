@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: '14'
 
-      - name: install-swagger-cli
+      - name: install
         run: |
           npm install -g @apidevtools/swagger-cli
 
-      - name: validate
+      - name: build
         run: |
           chmod +x build.sh
           ./build.sh
