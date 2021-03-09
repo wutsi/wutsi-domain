@@ -7,5 +7,7 @@ properties:
   count:
     type: number
     format: int64
+    default: 0
   countText:
     type: string
+    default: ""

@@ -4,3 +4,4 @@ properties:
   likeId:
     type: number
     format: int64
+    default: -1
