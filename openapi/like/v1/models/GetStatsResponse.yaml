@@ -8,6 +8,8 @@ properties:
     type: number
     format: int64
     default: 0
+    nullable: false
   countText:
     type: string
     default: ""
+    nullable: false
