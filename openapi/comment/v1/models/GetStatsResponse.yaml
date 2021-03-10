@@ -4,8 +4,11 @@ properties:
   link:
     type: string
     format: url
+    example: "https://www.foo.com/read/123/this-is-a-story"
   count:
     type: number
     format: int64
+    example: 35
   countText:
     type: string
+    example: "35"

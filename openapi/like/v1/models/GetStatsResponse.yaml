@@ -5,10 +5,13 @@ properties:
     type: string
     format: uri
     nullable: false
+    example: "https://www.foo.com/read/123"
   count:
     type: number
     format: int64
     nullable: false
+    example: 1500
   countText:
     type: string
     nullable: false
+    example: "1.5K"

@@ -4,3 +4,4 @@ properties:
   commentId:
     type: number
     format: int64
+    example: 1234
