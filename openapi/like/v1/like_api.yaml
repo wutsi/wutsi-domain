@@ -2,13 +2,13 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Like API"
   description: This api used for managing likes on links
-  version: "1.0"
+  version: "0.0.1"
 
 servers:
   - url: https://com-wutsi-prod-like.herokuapp.com
-    description: Production server
+    description: Production
   - url: https://com-wutsi-int-like.herokuapp.com
-    description: Sandbox server
+    description: Sandbox
 
 paths:
   /v1/likes:

@@ -4,13 +4,13 @@
 set -e
 
 # Clean
-rm -Rf target
-mkdir target
+rm -Rf output
+mkdir output
 
 # Build
 for file in $(find . -type f -iname '*_api.yaml'); do
   filename=$(basename $file suffix)
 
   swagger-cli validate $file
-  swagger-cli bundle -t yaml -o target/$filename $file
+  swagger-cli bundle -t yaml -o output/$filename $file
 done
