@@ -11,7 +11,3 @@ properties:
     format: int64
     nullable: false
     example: 1500
-  countText:
-    type: string
-    nullable: false
-    example: "1.5K"
