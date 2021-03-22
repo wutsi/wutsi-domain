@@ -53,12 +53,14 @@ paths:
             nullable: false
         - in: query
           name: deviceId
+          required: false
           schema:
             type: string
             format: uuid
             nullable: true
         - in: query
           name: userId
+          required: false
           schema:
             type: integer
             format: int64
