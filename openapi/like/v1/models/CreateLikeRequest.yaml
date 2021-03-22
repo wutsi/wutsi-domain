@@ -5,7 +5,7 @@ properties:
     type: string
     format: uri
     nullable: false
-  deviceId:
+  deviceUUID:
     type: string
     format: uuid
     nullable: true
