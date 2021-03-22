@@ -46,10 +46,23 @@ paths:
       summary: "Returns the Like statistics of a link"
       parameters:
         - in: query
-          name: link
+          name: canonicalUrl
           required: true
           schema:
             type: string
+            nullable: false
+        - in: query
+          name: deviceId
+          schema:
+            type: string
+            format: uuid
+            nullable: true
+        - in: query
+          name: userId
+          schema:
+            type: integer
+            format: int64
+            nullable: true
       responses:
         200:
           description: Success

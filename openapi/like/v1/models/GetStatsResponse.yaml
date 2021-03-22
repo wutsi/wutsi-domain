@@ -1,7 +1,7 @@
 # GetStatsResponse
 type: object
 properties:
-  link:
+  canonicalUrl:
     type: string
     format: uri
     nullable: false

@@ -1,8 +1,17 @@
 # CreateLikeRequest
 type: object
 properties:
-  link:
+  canonicalUrl:
     type: string
     format: uri
+    nullable: false
+  deviceId:
+    type: string
+    format: uuid
+    nullable: true
+  userId:
+    type: integer
+    format: int64
+    nullable: true
 required:
-  - link
+  - canonicalUrl
