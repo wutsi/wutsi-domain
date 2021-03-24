@@ -27,20 +27,28 @@ paths:
           required: true
           schema:
             type: string
-            nullable: false
         - in: query
           name: user_id
-          required: false
           schema:
             type: integer
             format: int64
             nullable: true
         - in: query
           name: device_uuid
-          required: false
           schema:
             type: string
             nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            nullable: false
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
       responses:
         200:
           description: Success
