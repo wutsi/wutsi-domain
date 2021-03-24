@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Like API"
   description: This api used for managing likes on links
-  version: "0.0.2"
+  version: "0.0.3"
 
 servers:
   - url: https://com-wutsi-prod-like.herokuapp.com
@@ -16,12 +16,6 @@ paths:
       operationId: "search"
       summary: "Search the likes for a given link"
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - in: query
           name: canonical_url
           required: true
