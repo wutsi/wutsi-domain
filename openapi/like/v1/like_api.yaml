@@ -13,7 +13,7 @@ servers:
 paths:
   /v1/likes:
     get:
-      operationId: "get"
+      operationId: "search"
       summary: "Search the likes for a given link"
       parameters:
         - in: path
@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetLikeResponse'
+                $ref: '#/components/schemas/SearchLikeResponse'
         404:
           description: Like not found
           content:
@@ -183,13 +183,13 @@ components:
           nullable: false
           example: 1500
 
-    GetLikeResponse:
+    SearchLikeResponse:
       type: object
       properties:
         likes:
           type: array
-        items:
-          $ref: '#/components/schemas/Like'
+          items:
+            $ref: '#/components/schemas/Like'
 
     Like:
       type: object
