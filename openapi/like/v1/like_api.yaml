@@ -44,11 +44,13 @@ paths:
             type: integer
             nullable: false
             default: 20
+            example: 20
         - in: query
           name: offset
           schema:
             type: integer
             default: 0
+            example: 0
       responses:
         200:
           description: Success
@@ -178,17 +180,22 @@ components:
         canonicalUrl:
           type: string
           format: uri
-          nullable: false
           example: "https://www.foo.com/read/123"
         count:
           type: number
           format: int64
-          nullable: false
           example: 1500
 
     SearchLikeResponse:
       type: object
       properties:
+        offset:
+          type: integer
+          default: 0
+          example: 0
+        nextOffset:
+          type: integer
+          nullable: true
         likes:
           type: array
           items:
