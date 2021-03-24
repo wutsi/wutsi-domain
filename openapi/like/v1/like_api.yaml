@@ -158,16 +158,11 @@ components:
     CreateLikeResponse:
       type: object
       properties:
-        canonicalUrl:
-          type: string
-          format: uri
-          nullable: false
-          example: "https://www.foo.com/read/123"
-        count:
+        likeId:
           type: integer
           format: int64
           nullable: false
-          example: 1500
+          example: 1
 
     GetStatsResponse:
       type: object
