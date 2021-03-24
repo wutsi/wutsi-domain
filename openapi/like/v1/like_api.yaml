@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Like API"
   description: This api used for managing likes on links
-  version: "0.0.1"
+  version: "0.0.2"
 
 servers:
   - url: https://com-wutsi-prod-like.herokuapp.com
@@ -12,6 +12,53 @@ servers:
 
 paths:
   /v1/likes:
+    get:
+      operationId: "get"
+      summary: "Search the like for a given user or device"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: canonical_url
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - in: query
+          name: user_id
+          required: false
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: device_uuid
+          required: false
+          schema:
+            type: string
+            nullable: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLikeResponse'
+        404:
+          description: Like not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key: []
+      tags:
+        - Like
+
     post:
       operationId: "create"
       summary: "Add a Like to a link"
@@ -58,12 +105,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetStatsResponse'
-        404:
-          description: Link is not valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
         default:
           description: Unexpected error
           content:
@@ -97,13 +138,85 @@ paths:
 components:
   schemas:
     CreateLikeRequest:
-      $ref: "models/CreateLikeRequest.yaml"
+      type: object
+      properties:
+        canonicalUrl:
+          type: string
+          format: uri
+          nullable: false
+        deviceUUID:
+          type: string
+          format: uuid
+          nullable: true
+        userId:
+          type: integer
+          format: int64
+          nullable: true
+      required:
+        - canonicalUrl
+
     CreateLikeResponse:
-      $ref: "models/CreateLikeResponse.yaml"
+      type: object
+      properties:
+        canonicalUrl:
+          type: string
+          format: uri
+          nullable: false
+          example: "https://www.foo.com/read/123"
+        count:
+          type: integer
+          format: int64
+          nullable: false
+          example: 1500
+
+    GetStatsResponse:
+      type: object
+      properties:
+        canonicalUrl:
+          type: string
+          format: uri
+          nullable: false
+          example: "https://www.foo.com/read/123"
+        count:
+          type: number
+          format: int64
+          nullable: false
+          example: 1500
+
+    GetLikeResponse:
+      type: object
+      properties:
+        likes:
+          type: array
+        items:
+          $ref: '#/components/schemas/Like'
+
+    Like:
+      type: object
+      properties:
+        canonicalUrl:
+          type: string
+          format: uri
+          nullable: false
+          example: "https://www.foo.com/read/123"
+        userId:
+          type: integer
+          format: int64
+          nullable: true
+          example: 1
+        deviceUUID:
+          type: string
+          format: uuid
+          nullable: true
+          example: "8e976869-2b06-407b-95ea-9e69da162a0c"
+        likeDateTime:
+          type: string
+          format: date-time
+          nullable: false
+          example: "2017-07-21T17:32:28Z"
+
     ErrorResponse:
       $ref: "../../common/v1/ErrorResponse.yaml"
-    GetStatsResponse:
-      $ref: "models/GetStatsResponse.yaml"
 
   securitySchemes:
     api_key:
