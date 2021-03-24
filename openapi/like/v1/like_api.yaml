@@ -14,7 +14,7 @@ paths:
   /v1/likes:
     get:
       operationId: "get"
-      summary: "Search the like for a given user or device"
+      summary: "Search the likes for a given link"
       parameters:
         - in: path
           name: id
