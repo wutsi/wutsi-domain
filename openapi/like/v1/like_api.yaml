@@ -198,6 +198,11 @@ components:
     Like:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
+          nullable: false
+          example: 11
         canonicalUrl:
           type: string
           format: uri
