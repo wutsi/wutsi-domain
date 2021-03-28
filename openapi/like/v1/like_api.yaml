@@ -58,7 +58,7 @@ paths:
         - Like
 
     post:
-      operationId: "submit"
+      operationId: "create"
       summary: "Submit a Like request"
       description: |
         This operation is invoked whenever the user interacts with the Like button.
