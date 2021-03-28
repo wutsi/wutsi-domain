@@ -155,14 +155,8 @@ components:
           type: integer
           format: int64
           nullable: true
-        vote:
-          type: integer
-          format: int32
-          description: "+1=Like, -1=Unlike"
-          default: 1
       required:
         - canonicalUrl
-        - vote
 
     CreateLikeResponse:
       type: object
