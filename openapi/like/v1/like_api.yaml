@@ -14,7 +14,7 @@ paths:
   /v1/likes:
     get:
       operationId: "search"
-      summary: "Search the likes for a given link"
+      summary: "Search the Likes for a given link"
       parameters:
         - in: query
           name: canonical_url
@@ -52,20 +52,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchLikeResponse'
-        404:
-          description: Like not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       security:
         - api_key: []
       tags:
         - Like
 
     post:
-      operationId: "create"
-      summary: "Submit a like"
+      operationId: "submit"
+      summary: "Submit a Like request"
+      description: |
+        This operation is invoked whenever the user interacts with the Like button.
+        - The first time the user clicks the `Like` button, it means he liked the link
+        - The next time the user will click on the `Like` button, it means he unliked the link
+        - If the user clicks a third time, it means he liked the link
+        - etc.
       requestBody:
         description: Like request
         required: true
@@ -115,25 +115,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-        - api_key: []
-      tags:
-        - Like
-
-  /v1/likes/{id}:
-    delete:
-      operationId: "delete"
-      summary: "Unlike a link"
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: number
-            format: int64
-      responses:
-        200:
-          description: Success
       security:
         - api_key: []
       tags:
