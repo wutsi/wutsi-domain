@@ -163,13 +163,6 @@ components:
     SearchLikeResponse:
       type: object
       properties:
-        offset:
-          type: integer
-          default: 0
-          example: 0
-        nextOffset:
-          type: integer
-          nullable: true
         likes:
           type: array
           items:
