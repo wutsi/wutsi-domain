@@ -147,7 +147,6 @@ components:
         canonicalUrl:
           type: string
           format: uri
-          nullable: false
         deviceUUID:
           type: string
           format: uuid
@@ -162,6 +161,7 @@ components:
           description: "+1=Like, -1=Unlike"
       required:
         - canonicalUrl
+        - vote
 
     CreateLikeResponse:
       type: object
