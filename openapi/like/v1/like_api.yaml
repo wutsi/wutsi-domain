@@ -5,9 +5,9 @@ info:
   version: "0.0.3"
 
 servers:
-  - url: https://com-wutsi-prod-like.herokuapp.com
+  - url: https://wutsi-like-service-prod.herokuapp.com
     description: Production
-  - url: https://com-wutsi-int-like.herokuapp.com
+  - url: https://wutsi-like-service-test.herokuapp.com
     description: Sandbox
 
 paths:
