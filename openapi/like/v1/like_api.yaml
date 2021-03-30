@@ -136,6 +136,10 @@ components:
           type: integer
           format: int64
           nullable: true
+        likeDateTime:
+          type: string
+          format: date-time
+          nullable: true
       required:
         - canonicalUrl
 
