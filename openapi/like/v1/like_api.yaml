@@ -102,6 +102,17 @@ paths:
           schema:
             type: string
             nullable: false
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: device_uuid
+          schema:
+            type: string
+            nullable: true
       responses:
         200:
           description: Success
