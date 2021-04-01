@@ -1,16 +1,18 @@
 @startuml
 class Site {
-  domain_name
+  id
+  name
+  hostName
+  displayName
+  webisteUrl
 }
 
-class Configuration {
-}
-
-class Capability {
+class Attribute {
   urn
+  value
 }
 
 
-Site -> Configuration
+Site ->"*"  Attribute
 Site -->"*" Capability
 @enduml
