@@ -70,8 +70,8 @@ paths:
         - Site
 
   /v1/site/{id}/attributes/{urn}:
-    get:
-      operationId: "get"
+    post:
+      operationId: "setAttribute"
       summary: "Update a site attribute"
       description: |
         Update a site attribute.
@@ -85,55 +85,25 @@ paths:
             type: integer
             format: int64
         - in: path
-          name: url
+          name: urn
           description: URN of the attribute
           required: true
           schema:
             type: string
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetSiteResponse'
-      tags:
-        - Site
-
-    post:
-      operationId: "update"
-      summary: "Update a Site"
-      description: |
-        Update a site information.
-        After the site is updated, the event `urn:event:wutsi:site:updated` will be fired.
-      parameters:
-        - in: path
-          name: id
-          description: ID of the site
-          required: true
-          schema:
-            type: integer
-            format: int64
       requestBody:
         description: request
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSiteRequest'
+              $ref: '#/components/schemas/SetAttributeRequest'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteResponse"
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/SetAttributeResponse'
       tags:
         - Site
 
