@@ -1,21 +1,23 @@
 @startuml
-class Link {
-  url
-}
 
-class Site {
-}
+
+class LikeBadge << WebComponent >> 
+note top of LikeBadge: "Display Like badge on Web"  
+
+class LikeAPI << REST API>>
+
 
 class Like {
+  url
   likeDateTime 
-}
-
-class Reader {
   deviceId
   userId
+  siteId
 }
 
-Link -> "*" Like
-Link "*" --> Site
-Like "*" -> Reader
+LikeAPI -> "*" Like 
+LikeBadge --> LikeAPI
+
+
+
 @enduml
