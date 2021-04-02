@@ -100,10 +100,6 @@ paths:
       responses:
         200:
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetAttributeResponse'
       tags:
         - Site
 
@@ -213,15 +209,6 @@ components:
         value:
           type: string
           nullable: true
-
-    SetAttributeResponse:
-      type: object
-      properties:
-        siteId:
-          type: integer
-          format: int64
-        urn:
-          type: string
 
     CreateSiteRequest:
       type: object
