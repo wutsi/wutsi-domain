@@ -217,7 +217,10 @@ components:
     SetAttributeResponse:
       type: object
       properties:
-        name:
+        siteId:
+          type: integer
+          format: int64
+        urn:
           type: string
 
     CreateSiteRequest:
