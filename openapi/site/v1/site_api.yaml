@@ -196,14 +196,9 @@ components:
         displayName:
           type: string
           example: "ZeSite"
-        websiteUrl:
-          type: string
-          format: url
-          example: "https://www.zesite.com"
       required:
         - name
         - domainName
-        - websiteUrl
 
     UpdateSiteResponse:
       type: object
@@ -237,14 +232,9 @@ components:
         displayName:
           type: string
           example: "ZeSite"
-        websiteUrl:
-          type: string
-          format: url
-          example: "https://www.zesite.com"
       required:
         - name
         - domainName
-        - websiteUrl
 
     CreateSiteResponse:
       type: object
