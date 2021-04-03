@@ -18,13 +18,6 @@ paths:
       summary: "Share a Story on Telegram"
       parameters:
         - in: query
-          name: site-id
-          description: ID of the site
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - in: query
           name: story-id
           description: ID of the story to share
           required: true
