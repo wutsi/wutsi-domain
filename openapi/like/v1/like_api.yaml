@@ -7,8 +7,6 @@ info:
 servers:
   - url: https://wutsi-like-service-test.herokuapp.com
     description: Sandbox
-  - url: https://wutsi-like-service-prod.herokuapp.com
-    description: Production
 
 paths:
   /v1/likes:
