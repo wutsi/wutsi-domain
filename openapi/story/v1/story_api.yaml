@@ -33,12 +33,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetStoryResponse'
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       tags:
         - Story
 
@@ -74,7 +68,3 @@ components:
           type: string
           format: url
           example: "https://www.wutsi.com/read/123"
-
-
-    ErrorResponse:
-      $ref: "../../common/v1/ErrorResponse.yaml"
