@@ -11,9 +11,9 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: https://wutsi-site-service-test.herokuapp.com
+  - url: https://wutsi-site-test.herokuapp.com
     description: Sandbox
-  - url: https://wutsi-site-service-prod.herokuapp.com
+  - url: https://wutsi-site-prod.herokuapp.com
     description: Production
 
 paths:
