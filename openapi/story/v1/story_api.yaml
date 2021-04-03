@@ -7,7 +7,7 @@ info:
     - Create Stories
     - Publish Stories
     - Return the content of Stories in various languages
-  version: "1.0.0"
+  version: "0.0.1"
 
 servers:
   - url: https://int-com-wutsi-blog.herokuapp.com
