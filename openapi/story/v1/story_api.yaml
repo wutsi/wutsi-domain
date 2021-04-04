@@ -41,7 +41,7 @@ components:
     GetStoryResponse:
       type: object
       properties:
-        site:
+        story:
           type: object
           $ref: "#/components/schemas/Story"
 
