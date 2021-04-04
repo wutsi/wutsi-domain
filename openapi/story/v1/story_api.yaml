@@ -12,6 +12,8 @@ info:
 servers:
   - url: https://int-com-wutsi-blog.herokuapp.com
     description: Sandbox
+  - url: https://com-wutsi-blog.herokuapp.com
+    description: Production
 
 paths:
   /v1/story/{id}:
