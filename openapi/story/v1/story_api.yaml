@@ -58,15 +58,26 @@ components:
           type: integer
           format: int64
           example: 1
+        userId:
+          type: integer
+          format: int64
+          example: 1
         title:
           type: string
           example: "This is the story of my life"
-        tagName:
+          description: "Description of the Story"
+        tagLine:
           type: string
           example: "It's all about the journey, not the destination"
         summary:
           type: string
+          description: "Summary of the Story"
         slug:
           type: string
           format: url
-          example: "https://www.wutsi.com/read/123"
+          example: "https://www.wutsi.com/read/123/this-is-the-story-of-my-life"
+        socialMediaMessage:
+          type: string
+          format: url
+          nullable: true
+          description: "Message to publish on social media. If not provided, the site of the story will be published"
