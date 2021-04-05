@@ -35,7 +35,8 @@ paths:
       operationId: "save-account"
       summary: "Store Account Information"
       description: |
-        Save the information of a Twitter account of a given user
+        Save the information of a Twitter account of a given user.
+        If the information are not available, they will be created; else they will be updated
       parameters:
         - in: path
           name: user-id
@@ -85,7 +86,7 @@ components:
         - accessToken
         - accessTokenSecret
 
-    SaveAccountRequest:
+    SaveAccountResponse:
       type: object
       properties:
         accountId:
