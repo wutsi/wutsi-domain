@@ -1,21 +1,21 @@
 openapi: "3.0.0"
 info:
-  title: "Wutsi Telegram API"
+  title: "Wutsi Twitter API"
   description: |
-    API for sharing stories on Telegram.
+    API for sharing stories on Twitter.
   version: "1.0.0"
 
 servers:
-  - url: https://wutsi-telegram-test.herokuapp.com
+  - url: https://wutsi-twitter-test.herokuapp.com
     description: Sandbox
-  - url: https://wutsi-telegram-prod.herokuapp.com
+  - url: https://wutsi-twitter-prod.herokuapp.com
     description: Sandbox
 
 paths:
-  /v1/telegram/share:
+  /v1/twitter/share:
     get:
       operationId: "share"
-      summary: "Share a Story on Telegram"
+      summary: "Share a Story on Twitter"
       parameters:
         - in: query
           name: story-id
