@@ -67,6 +67,10 @@ components:
     SaveAccountRequest:
       type: object
       properties:
+        siteId:
+          type: integer
+          format: int64
+          example: 1
         twitterId:
           type: integer
           format: int64
