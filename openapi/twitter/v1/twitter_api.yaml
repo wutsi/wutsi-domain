@@ -15,7 +15,7 @@ paths:
   /v1/twitter/share:
     get:
       operationId: "share"
-      summary: "Share a Story on Twitter"
+      summary: "Share a Story"
       parameters:
         - in: query
           name: story-id
@@ -29,3 +29,62 @@ paths:
           description: Success
       tags:
         - Twitter
+
+  /v1/twitter/account/{user-id}:
+    post:
+      operationId: "save-account"
+      summary: "Store Account Information"
+      description: |
+        Save the information of a Twitter account of a given user
+      parameters:
+        - in: path
+          name: user-id
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveAccountResponse'
+      tags:
+        - Twitter
+
+components:
+  schemas:
+    SaveAccountResponse:
+      type: object
+      properties:
+        story:
+          type: object
+          $ref: "#/components/schemas/Account"
+
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 123
+        twitterId:
+          type: integer
+          format: int64
+          example: 123
+        twitterScreenName:
+          type: string
+        pictureUrl:
+          type: string
+          nullable: true
+        accessToken:
+          type: string
+        accessTokenSecret:
+          type: string
+      required:
+        - twitterId
+        - twitterScreenName
+        - accessToken
+        - accessTokenSecret
