@@ -51,20 +51,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SaveSecretRequest'
+              $ref: '#/components/schemas/StoreSecretRequest'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SaveSecretResponse'
+                $ref: '#/components/schemas/StoreSecretResponse'
       tags:
         - Twitter
 
 components:
   schemas:
-    SaveSecretRequest:
+    StoreSecretRequest:
       type: object
       properties:
         siteId:
@@ -84,7 +84,7 @@ components:
         - accessToken
         - accessTokenSecret
 
-    SaveSecretResponse:
+    StoreSecretResponse:
       type: object
       properties:
         secretId:
