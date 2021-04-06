@@ -30,13 +30,13 @@ paths:
       tags:
         - Twitter
 
-  /v1/twitter/account/{user-id}:
+  /v1/twitter/secrets/{user-id}:
     post:
-      operationId: "save-account"
-      summary: "Store Account Information"
+      operationId: "store-secret"
+      summary: "Store Twitter secret information"
       description: |
-        Save the information of a Twitter account of a given user.
-        If the information are not available, they will be created; else they will be updated
+        Store the secrets for a Twitter user.
+        The secrets includes access-token and access-token-secret
       parameters:
         - in: path
           name: user-id
@@ -51,49 +51,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SaveAccountRequest'
+              $ref: '#/components/schemas/SaveSecretRequest'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SaveAccountResponse'
+                $ref: '#/components/schemas/SaveSecretResponse'
       tags:
         - Twitter
 
 components:
   schemas:
-    SaveAccountRequest:
+    SaveSecretRequest:
       type: object
       properties:
         siteId:
           type: integer
           format: int64
           example: 1
-        twitterId:
-          type: integer
-          format: int64
-          example: 123
-        twitterScreenName:
-          type: string
-        pictureUrl:
-          type: string
-          nullable: true
         accessToken:
           type: string
         accessTokenSecret:
           type: string
       required:
-        - twitterId
-        - twitterScreenName
         - accessToken
         - accessTokenSecret
 
-    SaveAccountResponse:
+    SaveSecretResponse:
       type: object
       properties:
-        accountId:
+        secretId:
           type: integer
           format: int64
           example: 123
