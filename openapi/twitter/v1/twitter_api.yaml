@@ -71,11 +71,16 @@ components:
           type: integer
           format: int64
           example: 1
+        twitterId:
+          type: integer
+          format: int64
+          example: 1
         accessToken:
           type: string
         accessTokenSecret:
           type: string
       required:
+        - twitterId
         - accessToken
         - accessTokenSecret
 
