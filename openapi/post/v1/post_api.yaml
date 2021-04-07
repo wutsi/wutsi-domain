@@ -36,7 +36,10 @@ components:
   schemas:
     GetPostResponse:
       type: object
-      $ref: '#/components/schemas/Post'
+      properties:
+        post:
+          type: object
+          $ref: '#/components/schemas/Post'
 
     Post:
       type: object
