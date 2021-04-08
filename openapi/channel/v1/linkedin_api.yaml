@@ -86,9 +86,7 @@ components:
           format: int64
           example: 1
         linkedinId:
-          type: integer
-          format: int64
-          example: 1
+          type: string
         accessToken:
           type: string
         accessTokenSecret:
