@@ -58,6 +58,7 @@ components:
           type: integer
           format: int64
           example: 1
+          default: 1
         userId:
           type: integer
           format: int64
