@@ -64,6 +64,7 @@ components:
           nullable: true
         includeLink:
           type: boolean
+          nullable: false
           default: true
         language:
           type: string
