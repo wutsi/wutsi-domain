@@ -16,6 +16,7 @@ servers:
   - url: https://wutsi-site-prod.herokuapp.com
     description: Production
 
+
 paths:
   /v1/sites/{id}:
     get:
