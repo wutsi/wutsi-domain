@@ -1,0 +1,64 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Email API"
+  description: |
+    API for sending emails.
+  version: "1.0.0"
+
+servers:
+  - url: https://int-com-wutsi-blog.herokuapp.com
+    description: Sandbox
+  - url: https://com-wutsi-blog.herokuapp.com
+    description: Production
+
+paths:
+  /v1/emails:
+    post:
+      operationId: "send"
+      summary: "Send and email"
+      requestBody:
+        description: Like request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+      responses:
+        200:
+          description: Success
+      tags:
+        - Email
+
+components:
+  schemas:
+    SendEmailRequest:
+      type: object
+      properties:
+        siteId:
+          type: integer
+          format: int64
+          example: 1
+        subject:
+          type: string
+        body:
+          type: String
+        contentType:
+          type: String
+          default: "text/html"
+        language:
+          type: String
+          nullable: true
+        fromUserId:
+          type: integer
+          format: int64
+          nullable: true
+        toEmail:
+          type: string
+          format: email
+        toFullName:
+          type: string
+          nullable: true
+      required:
+        - subject
+        - contentType
+        - toEmail
