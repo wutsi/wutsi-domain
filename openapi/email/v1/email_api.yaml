@@ -81,6 +81,9 @@ components:
           type: string
         body:
           type: string
+        campaign:
+          type: string
+          nullable: true
       required:
         - siteId
         - subject
