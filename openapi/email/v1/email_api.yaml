@@ -30,8 +30,8 @@ paths:
 
   /v1/sites/{site-id}/list/members:
     delete:
-      operationId: "unsubscribe from site"
-      summary: "Unsubscribe an email from a site"
+      operationId: "unsubscribe"
+      summary: "Unsubscribe an email from a mailing list"
       parameters:
         - in: path
           name: site-id
@@ -47,32 +47,14 @@ paths:
           schema:
             type: string
             format: email
-      responses:
-        200:
-          description: Success
-      tags:
-        - Mailing List
-
-
-  /v1/users/{user-id}/list/members:
-    delete:
-      operationId: "unsubscribe from user"
-      summary: "Unsubscribe an email from a user mailing list"
-      parameters:
-        - in: path
+        - in: query
           name: user-id
-          description: ID of the user
-          required: true
+          description: |
+            ID of owner of the list. If not provided, the user will be removed from the site mailing list.
           schema:
             type: integer
             format: int64
-        - in: query
-          name: email
-          description: Email to remove from the list
-          required: true
-          schema:
-            type: string
-            format: email
+            nullable: true
       responses:
         200:
           description: Success
