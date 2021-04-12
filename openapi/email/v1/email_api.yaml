@@ -72,7 +72,6 @@ components:
           example: 1
         sender:
           type: object
-          nullable: true
           $ref: '#/components/schemas/Sender'
         recipient:
           type: object
@@ -99,6 +98,7 @@ components:
           type: integer
           format: int64
           example: 1
+          nullable: true
 
     Address:
       type: object
