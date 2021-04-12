@@ -81,6 +81,8 @@ components:
           type: string
         body:
           type: string
+        contentType:
+          type: string
         campaign:
           type: string
           nullable: true
@@ -88,6 +90,7 @@ components:
         - siteId
         - subject
         - recipient
+        - contentType
 
     Sender:
       type: object
