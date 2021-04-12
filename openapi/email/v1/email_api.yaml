@@ -73,7 +73,7 @@ components:
         sender:
           type: object
           nullable: true
-          $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/Sender'
         recipient:
           type: object
           $ref: '#/components/schemas/Address'
@@ -85,6 +85,14 @@ components:
         - siteId
         - subject
         - recipient
+
+    Sender:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+          example: 1
 
     Address:
       type: object
