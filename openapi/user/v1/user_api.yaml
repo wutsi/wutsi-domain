@@ -39,7 +39,7 @@ components:
     GetUserResponse:
       type: object
       properties:
-        story:
+        user:
           type: object
           $ref: "#/components/schemas/User"
 
