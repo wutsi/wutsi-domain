@@ -88,3 +88,6 @@ components:
         readingMinutes:
           type: integer
           description: "Estimation of the reading time in minute"
+        publishedDateTime:
+          type: string
+          format: date-time
