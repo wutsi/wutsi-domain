@@ -9,7 +9,7 @@ servers:
   - url: https://wutsi-newsletter-test.herokuapp.com
     description: Sandbox
   - url: https://wutsi-newsletter-prod.herokuapp.com
-    description: Sandbox
+    description: Production
 
 paths:
   /v1/newsletter/share:
