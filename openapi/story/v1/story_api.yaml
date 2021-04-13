@@ -85,3 +85,6 @@ components:
         content:
           type: string
           description: "Content of the Story in the format of editorjs"
+        readingMinutes:
+          type: integer
+          description: "Estimation of the reading time in minute"
