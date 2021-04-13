@@ -36,7 +36,7 @@ paths:
 
   /v1/users/{id}/followers:
     get:
-      operationId: "get"
+      operationId: "followers"
       summary: "Return followers of a given user"
       parameters:
         - in: path
