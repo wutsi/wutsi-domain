@@ -98,9 +98,10 @@ components:
     SearchFollowerResponse:
       type: object
       properties:
-        user:
-          type: object
-          $ref: "#/components/schemas/Follower"
+        followers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Follower"
 
     Follower:
       type: object
