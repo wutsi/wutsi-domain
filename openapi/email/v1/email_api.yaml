@@ -72,10 +72,10 @@ components:
           example: 1
         sender:
           type: object
-          nullable: true
           $ref: '#/components/schemas/Sender'
         recipient:
           type: object
+          required: true
           $ref: '#/components/schemas/Address'
         subject:
           type: string
@@ -98,10 +98,8 @@ components:
         userId:
           type: integer
           format: int64
+          nullable: true
           example: 1
-        address:
-          type: object
-          $ref: '#/components/schemas/Address'
 
     Address:
       type: object
@@ -111,6 +109,7 @@ components:
           nullable: true
         email:
           type: string
+          required: true
           format: email
       required:
         - email
