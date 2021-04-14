@@ -75,7 +75,6 @@ components:
           $ref: '#/components/schemas/Sender'
         recipient:
           type: object
-          required: true
           $ref: '#/components/schemas/Address'
         subject:
           type: string
@@ -109,7 +108,6 @@ components:
           nullable: true
         email:
           type: string
-          required: true
           format: email
       required:
         - email
