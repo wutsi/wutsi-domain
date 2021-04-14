@@ -99,6 +99,10 @@ components:
           format: int64
           example: 1
           nullable: true
+        address:
+          type: object
+          nullable: true
+          $ref: '#/components/schemas/Address'
 
     Address:
       type: object
