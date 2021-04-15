@@ -82,7 +82,7 @@ components:
           type: string
         contentType:
           type: string
-        language:
+        contentLanguage:
           type: string
         campaign:
           type: string
@@ -92,6 +92,7 @@ components:
         - subject
         - recipient
         - contentType
+        - contentLanguage
 
     Sender:
       type: object
