@@ -82,6 +82,7 @@ components:
           type: integer
           format: int64
           example: 123
+          default: -1
         name:
           type: string
         email:
@@ -92,8 +93,12 @@ components:
         pictureUrl:
           type: string
           format: uri
+          nullable: true
         language:
           type: string
+          nullable: true
+        testUser:
+          type: boolean
 
     SearchFollowerResponse:
       type: object
