@@ -12,7 +12,7 @@ servers:
     description: Production
 
 paths:
-  /v1/emails:
+  /v1/tracks:
     post:
       operationId: "push"
       summary: "Push a tracking message"
