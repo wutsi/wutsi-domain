@@ -18,11 +18,11 @@ paths:
       summary: "Search"
       parameters:
         - in: query
-          name: story_ids
+          name: story_id
           schema:
-            type: array
-            items:
-              type: integer
+            type: integer
+            format: int64
+            nullable: true
         - in: query
           name: user_id
           schema:
