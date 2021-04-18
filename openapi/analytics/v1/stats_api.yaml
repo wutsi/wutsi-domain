@@ -1,8 +1,8 @@
 openapi: "3.0.0"
 info:
-  title: "Wutsi Tracking API"
+  title: "Wutsi Stats API"
   description: |
-    API for tracking user activities
+    API for querying Statistics
   version: "1.0.0"
 
 servers:
