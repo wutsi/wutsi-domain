@@ -1,0 +1,113 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Tracking API"
+  description: |
+    API for tracking user activities
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-stats-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-stats-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/views:
+    get:
+      operationId: "search"
+      summary: "Search"
+      parameters:
+        - in: query
+          name: story_ids
+          schema:
+            type: array
+            items:
+              type: integer
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: device_id
+          schema:
+            type: string
+            format: uuid
+            nullable: true
+        - in: query
+          name: start_date
+          schema:
+            type: string
+            format: date
+            nullable: true
+        - in: query
+          name: end_date
+          schema:
+            type: string
+            format: date
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchViewResponse'
+      tags:
+        - Tracking
+
+components:
+  schemas:
+    SearchViewResponse:
+      type: object
+      properties:
+        views:
+          type: array
+          items:
+            $ref: "#/components/schemas/View"
+
+    View:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storyId:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+          nullable: true
+        deviceId:
+          type: string
+          format: uuid
+        hitId:
+          type: string
+          format: uuid
+        source:
+          type: string
+          nullable: true
+        medium:
+          type: string
+          nullable: true
+        campaign:
+          type: string
+          nullable: true
+        referer:
+          type: string
+          nullable: true
+        viewDateTime:
+          type: string
+          format: date-time
