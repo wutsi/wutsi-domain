@@ -18,31 +18,31 @@ paths:
       summary: "Search views"
       parameters:
         - in: query
-          name: story_id
+          name: story-id
           schema:
             type: integer
             format: int64
             nullable: true
         - in: query
-          name: user_id
+          name: user-id
           schema:
             type: integer
             format: int64
             nullable: true
         - in: query
-          name: device_id
+          name: device-id
           schema:
             type: string
             format: uuid
             nullable: true
         - in: query
-          name: start_date
+          name: start-date
           schema:
             type: string
             format: date
             nullable: true
         - in: query
-          name: end_date
+          name: end-date
           schema:
             type: string
             format: date
@@ -66,21 +66,20 @@ paths:
                 $ref: '#/components/schemas/SearchViewResponse'
       tags:
         - Stats
-  /v1/views/replay:
+  /v1/replay:
     get:
       operationId: "replay"
-      summary: "Rebuild the view information"
+      summary: "Rebuild statistics"
       description: |
-        This process will refectch all the user interaction message from S3 to extract View information, and store them
-        into the database.
+        This process will rebuild the stats by reprocessing all the user interaction messages from S3 for the provided start/end date.
       parameters:
         - in: query
-          name: start_date
+          name: start-date
           schema:
             type: string
             format: date
         - in: query
-          name: end_date
+          name: end-date
           schema:
             type: string
             format: date
