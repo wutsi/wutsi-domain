@@ -15,7 +15,7 @@ paths:
   /v1/views:
     get:
       operationId: "search"
-      summary: "Search"
+      summary: "Search views"
       parameters:
         - in: query
           name: story_id
@@ -69,7 +69,10 @@ paths:
   /v1/views/replay:
     get:
       operationId: "replay"
-      summary: "Replay"
+      summary: "Rebuild the view information"
+      description: |
+        This process will refectch all the user interaction message from S3 to extract View information, and store them
+        into the database.
       parameters:
         - in: query
           name: start_date
