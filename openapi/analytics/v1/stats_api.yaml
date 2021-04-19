@@ -65,7 +65,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchViewResponse'
       tags:
-        - Tracking
+        - Stats
+  /v1/views/replay:
+    get:
+      operationId: "replay"
+      summary: "Replay"
+      parameters:
+        - in: query
+          name: start_date
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end_date
+          schema:
+            type: string
+            format: date
+            nullable: true
+      responses:
+        200:
+          description: Success
 
 components:
   schemas:
