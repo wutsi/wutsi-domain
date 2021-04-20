@@ -76,12 +76,13 @@ paths:
       parameters:
         - in: query
           name: start-date
+          required: true
           schema:
             type: string
             format: date
-            required: true
         - in: query
           name: end-date
+          required: true
           schema:
             type: string
             format: date
