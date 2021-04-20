@@ -95,7 +95,7 @@ paths:
 
   /v1/kpis/daily:
     get:
-      operationId: "kpis"
+      operationId: "dailyKpis"
       summary: "Search Daily KPIs"
       parameters:
         - in: query
