@@ -205,15 +205,9 @@ components:
           format: int64
         type:
           type: string
-        year:
-          type: integer
-          format: int32
-        month:
-          type: integer
-          format: int32
-        day:
-          type: integer
-          format: int32
+        date:
+          type: string
+          format: date
         value:
           type: integer
           format: int64
