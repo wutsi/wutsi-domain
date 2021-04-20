@@ -93,17 +93,17 @@ paths:
       tags:
         - Stats
 
-  /v1/kpis/daily:
+  /v1/kpis/stories/{story-id}/daily:
     get:
-      operationId: "dailyKpis"
-      summary: "Search Daily KPIs"
+      operationId: "storyDailyKpis"
+      summary: "Search Daily KPIs for a Story"
       parameters:
-        - in: query
+        - in: path
           name: story-id
+          required: true
           schema:
             type: integer
             format: int64
-            nullable: true
         - in: query
           name: type
           schema:
