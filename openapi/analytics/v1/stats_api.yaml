@@ -96,7 +96,7 @@ paths:
   /v1/kpis/stories/{story-id}/daily:
     get:
       operationId: "storyDailyKpis"
-      summary: "Search Daily KPIs for a Story"
+      summary: "Story Daily KPIs"
       parameters:
         - in: path
           name: story-id
@@ -140,6 +140,50 @@ paths:
       tags:
         - Stats
 
+  /v1/kpis/stories/{story-id}/monthly:
+    get:
+      operationId: "storyMonthlyKpis"
+      summary: "Story Monthly KPIs"
+      parameters:
+        - in: path
+          name: story-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: type
+          schema:
+            type: string
+        - in: query
+          name: year
+          schema:
+            type: integer
+            format: in32
+        - in: query
+          name: month
+          schema:
+            type: integer
+            format: in32
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchKpiResponse'
+      tags:
+        - Stats
 
 components:
   schemas:
