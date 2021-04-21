@@ -165,6 +165,7 @@ paths:
           schema:
             type: integer
             format: in32
+            nullable: true
         - in: query
           name: limit
           schema:
