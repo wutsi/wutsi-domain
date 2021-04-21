@@ -67,12 +67,39 @@ paths:
       tags:
         - Stats
 
-  /v1/replay:
+  /v1/replay/daily:
     get:
-      operationId: "replay"
-      summary: "Rebuild statistics"
+      operationId: "replayDaily"
+      summary: "Rebuild daily statistics"
       description: |
-        This process will rebuild the stats by reprocessing all the user interaction messages from S3 for the provided start/end date.
+        This process will rebuild the daily statistic by reprocessing all the user interaction messages from S3 for the provided start/end date.
+      parameters:
+        - in: query
+          name: start-date
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end-date
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: true
+      responses:
+        200:
+          description: Success
+      tags:
+        - Stats
+
+  /v1/replay/monthly:
+    get:
+      operationId: "replayMonthly"
+      summary: "Rebuild monthly statistics"
+      description: |
+        This process will rebuild the monthly statistic.
+        The montly statistics are aggregated from the daily statistics
       parameters:
         - in: query
           name: start-date

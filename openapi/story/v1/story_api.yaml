@@ -82,6 +82,9 @@ components:
           format: url
           nullable: true
           description: "Message to publish on social media. If not provided, the site of the story will be published"
+        wppStatus:
+          type: string
+          nullable: true
         content:
           type: string
           description: "Content of the Story in the format of editorjs"
