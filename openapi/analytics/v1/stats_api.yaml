@@ -344,7 +344,7 @@ components:
         id:
           type: integer
           format: int64
-        storyId:
+        userId:
           type: integer
           format: int64
         type:
