@@ -259,6 +259,16 @@ paths:
       tags:
         - Stats
 
+  /v1/stories/import:
+    get:
+      operationId: "importStories"
+      summary: "Import stories"
+      responses:
+        200:
+          description: Success
+      tags:
+        - Migration
+
 components:
   schemas:
     SearchViewResponse:

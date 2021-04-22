@@ -38,6 +38,33 @@ paths:
       tags:
         - Story
 
+  /v1/stories/published:
+    get:
+      operationId: "published"
+      summary: "Return the published stories"
+      parameters:
+        - in: query
+          name: limit
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchStoryResponse'
+      tags:
+        - Story
+
 components:
   schemas:
     GetStoryResponse:
@@ -94,3 +121,12 @@ components:
         publishedDateTime:
           type: string
           format: date-time
+
+    SearchStoryResponse:
+      type: object
+      properties:
+        stories:
+          type: array
+          items:
+            $ref: "#/components/schemas/Story"
+
