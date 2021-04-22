@@ -74,6 +74,15 @@ components:
           type: object
           $ref: "#/components/schemas/Story"
 
+
+    SearchStoryResponse:
+      type: object
+      properties:
+        stories:
+          type: array
+          items:
+            $ref: "#/components/schemas/Story"
+
     Story:
       type: object
       properties:
@@ -121,12 +130,3 @@ components:
         publishedDateTime:
           type: string
           format: date-time
-
-    SearchStoryResponse:
-      type: object
-      properties:
-        stories:
-          type: array
-          items:
-            $ref: "#/components/schemas/Story"
-
