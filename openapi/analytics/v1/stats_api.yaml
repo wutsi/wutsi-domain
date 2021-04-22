@@ -303,10 +303,10 @@ paths:
       tags:
         - Traffic
 
-  /v1/traffics/stories/{story-id}/daily:
+  /v1/traffics/stories/{story-id}/monthly:
     get:
-      operationId: "storyDailyTraffic"
-      summary: "Story Daily Traffic"
+      operationId: "storyMonthlyTraffic"
+      summary: "Story Monthly Traffic"
       parameters:
         - in: path
           name: story-id
