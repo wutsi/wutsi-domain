@@ -65,7 +65,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchViewResponse'
       tags:
-        - Stats
+        - Views
 
   /v1/replay/daily:
     get:
@@ -91,7 +91,7 @@ paths:
         200:
           description: Success
       tags:
-        - Stats
+        - Views
 
   /v1/replay/monthly:
     get:
@@ -118,7 +118,8 @@ paths:
         200:
           description: Success
       tags:
-        - Stats
+        - Views
+
 
   /v1/kpis/stories/{story-id}/daily:
     get:
@@ -165,7 +166,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchStoryKpiResponse'
       tags:
-        - Stats
+        - KPI
 
   /v1/kpis/stories/{story-id}/monthly:
     get:
@@ -211,7 +212,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchStoryKpiResponse'
       tags:
-        - Stats
+        - KPI
 
   /v1/kpis/users/{user-id}/monthly:
     get:
@@ -257,7 +258,93 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchUserKpiResponse'
       tags:
-        - Stats
+        - KPI
+
+
+  /v1/traffics/users/{user-id}/monthly:
+    get:
+      operationId: "userMonthlyTraffic"
+      summary: "User Monthly Traffic"
+      parameters:
+        - in: path
+          name: user-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: year
+          schema:
+            type: integer
+            format: in32
+        - in: query
+          name: month
+          schema:
+            type: integer
+            format: in32
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchUserTrafficResponse'
+      tags:
+        - Traffic
+
+  /v1/traffics/stories/{story-id}/daily:
+    get:
+      operationId: "storyDailyTraffic"
+      summary: "Story Daily Traffic"
+      parameters:
+        - in: path
+          name: story-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: year
+          schema:
+            type: integer
+            format: in32
+        - in: query
+          name: month
+          schema:
+            type: integer
+            format: in32
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchStoryTrafficResponse'
+      tags:
+        - Traffic
+
 
   /v1/stories/import:
     get:
@@ -314,6 +401,7 @@ components:
           type: string
           format: date-time
 
+
     SearchStoryKpiResponse:
       type: object
       properties:
@@ -340,6 +428,7 @@ components:
           type: integer
           format: int64
 
+
     SearchUserKpiResponse:
       type: object
       properties:
@@ -359,6 +448,54 @@ components:
           format: int64
         type:
           type: string
+        date:
+          type: string
+          format: date
+        value:
+          type: integer
+          format: int64
+
+
+    SearchUserTrafficResponse:
+      type: object
+      properties:
+        traffics:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserTraffic"
+
+    UserTraffic:
+      type: object
+      properties:
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        value:
+          type: integer
+          format: int64
+
+
+    SearchStoryTrafficResponse:
+      type: object
+      properties:
+        traffics:
+          type: array
+          items:
+            $ref: "#/components/schemas/StoryTraffic"
+
+    StoryTraffic:
+      type: object
+      properties:
+        name:
+          type: string
+        storyId:
+          type: integer
+          format: int64
         date:
           type: string
           format: date
