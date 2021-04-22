@@ -382,6 +382,7 @@ components:
         deviceId:
           type: string
           format: uuid
+          nullable: true
         hitId:
           type: string
           format: uuid
@@ -400,6 +401,9 @@ components:
         viewDateTime:
           type: string
           format: date-time
+        traffic:
+          type: string
+          nullable: true
 
 
     SearchStoryKpiResponse:
@@ -469,6 +473,7 @@ components:
       properties:
         name:
           type: string
+          nullable: true
         userId:
           type: integer
           format: int64
@@ -493,6 +498,7 @@ components:
       properties:
         name:
           type: string
+          nullable: true
         storyId:
           type: integer
           format: int64
