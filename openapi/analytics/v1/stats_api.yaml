@@ -235,7 +235,7 @@ paths:
       operationId: "userMonthlyKpis"
       summary: "User Monthly KPIs"
       parameters:
-        - in: query
+        - in: path
           name: user-id
           required: true
           schema:
