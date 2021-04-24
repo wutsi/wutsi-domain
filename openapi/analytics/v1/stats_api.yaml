@@ -143,6 +143,7 @@ paths:
           name: type
           schema:
             type: string
+            nullable: true
         - in: query
           name: start-date
           schema:
