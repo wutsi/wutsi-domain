@@ -133,6 +133,13 @@ paths:
             format: int64
             nullable: true
         - in: query
+          name: user-id
+          description: ID of the author of the Story
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
           name: type
           schema:
             type: string
@@ -173,6 +180,12 @@ paths:
       operationId: "storyMonthlyKpis"
       summary: "Story Monthly KPIs"
       parameters:
+        - in: query
+          name: story-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
         - in: query
           name: user-id
           description: ID of the author of the Story
