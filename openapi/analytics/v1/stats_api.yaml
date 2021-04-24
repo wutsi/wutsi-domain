@@ -121,17 +121,17 @@ paths:
         - Views
 
 
-  /v1/kpis/stories/{story-id}/daily:
+  /v1/kpis/stories/daily:
     get:
       operationId: "storyDailyKpis"
       summary: "Story Daily KPIs"
       parameters:
-        - in: path
+        - in: query
           name: story-id
-          required: true
           schema:
             type: integer
             format: int64
+            nullable: true
         - in: query
           name: type
           schema:
@@ -168,21 +168,23 @@ paths:
       tags:
         - KPI
 
-  /v1/kpis/stories/{story-id}/monthly:
+  /v1/kpis/stories/monthly:
     get:
       operationId: "storyMonthlyKpis"
       summary: "Story Monthly KPIs"
       parameters:
-        - in: path
-          name: story-id
-          required: true
+        - in: query
+          name: user-id
+          description: ID of the author of the Story
           schema:
             type: integer
             format: int64
+            nullable: true
         - in: query
           name: type
           schema:
             type: string
+            nullable: true
         - in: query
           name: year
           schema:
@@ -219,7 +221,7 @@ paths:
       operationId: "userMonthlyKpis"
       summary: "User Monthly KPIs"
       parameters:
-        - in: path
+        - in: query
           name: user-id
           required: true
           schema:
