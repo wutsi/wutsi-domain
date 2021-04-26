@@ -1,0 +1,78 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Earning API"
+  description: |
+    API for manager blogger earnings
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-earning-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-earning-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/earnings/users/{user-id}:
+    get:
+      operationId: "user"
+      parameters:
+        - in: path
+          name: user-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: year
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchEarningResponse'
+      tags:
+        - Earnings
+
+components:
+  schemas:
+    SearchEarningResponse:
+      type: object
+      properties:
+        views:
+          type: array
+          items:
+            $ref: "#/components/schemas/Earning"
+
+    Earning:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        contractId:
+          type: integer
+          format: int64
+          nullable: true
+        partnerId:
+          type: integer
+          format: int64
+          nullable: true
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        syncDateTime:
+          type: string
+          format: date-time

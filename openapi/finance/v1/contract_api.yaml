@@ -1,0 +1,59 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Contract API"
+  description: |
+    API for manager blogger contracts
+  version: "1.0.0"
+
+servers:
+  - url: https://int-com-wutsi-blog.herokuapp.com
+    description: Sandbox
+  - url: https://com-wutsi-blog.herokuapp.com
+    description: Production
+
+paths:
+  /v1/contracts/active:
+    get:
+      operationId: "active"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchContractResponse'
+      tags:
+        - Cantract
+
+components:
+  schemas:
+    SearchContractResponse:
+      type: object
+      properties:
+        views:
+          type: array
+          items:
+            $ref: "#/components/schemas/Contract"
+
+    Contract:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        startDate:
+          type: integer
+          format: int64
+          nullable: true
+        endDate:
+          type: integer
+          format: int64
+          nullable: true
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
