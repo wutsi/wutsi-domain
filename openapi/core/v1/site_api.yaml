@@ -158,7 +158,7 @@ components:
     SearchSiteResponse:
       type: object
       properties:
-        site:
+        sites:
           type: array
           items:
             $ref: "#/components/schemas/SiteSummary"

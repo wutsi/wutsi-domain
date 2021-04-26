@@ -139,7 +139,7 @@ components:
     SearchUserResponse:
       type: object
       properties:
-        user:
+        users:
           type: array
           items:
             $ref: "#/components/schemas/UserSummary"
