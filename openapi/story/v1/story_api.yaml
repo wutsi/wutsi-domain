@@ -128,6 +128,5 @@ components:
           type: integer
           description: "Estimation of the reading time in minute"
         publishedDateTime:
-          type: integer
-          format: int64
-          description: "Timestamp of the date of publication"
+          type: string
+          format: date-time
