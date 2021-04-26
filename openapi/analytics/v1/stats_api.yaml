@@ -276,6 +276,23 @@ paths:
       tags:
         - KPI
 
+  /v1/kpis/users/{user-id}/monthly/email:
+    get:
+      operationId: "emailUserMonthlyKpis"
+      summary: "Send via email Monthly KPIs to a user"
+      parameters:
+        - in: path
+          name: user-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+      tags:
+        - KPI
+
 
   /v1/traffics/users/{user-id}/monthly:
     get:
