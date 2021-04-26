@@ -140,8 +140,9 @@ components:
       type: object
       properties:
         user:
-          type: object
-          $ref: "#/components/schemas/UserSummary"
+          type: array
+          items:
+            $ref: "#/components/schemas/UserSummary"
 
     UserSummary:
       type: object
@@ -172,6 +173,7 @@ components:
           nullable: true
         testUser:
           type: boolean
+
 
     SearchFollowerResponse:
       type: object
