@@ -287,6 +287,15 @@ paths:
           schema:
             type: integer
             format: int64
+        - in: query
+          name: date
+          required: true
+          description: |
+            Date for which we want to generate the email.
+            If date is `2020-10-01`, the email will be generated for the month of October 2020
+          schema:
+            type: string
+            format: date
       responses:
         200:
           description: Success
