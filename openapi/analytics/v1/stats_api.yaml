@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Stats API"
   description: |
-    API for querying Statistics
+    API for managing the platform Key Performance Metrics
   version: "1.0.0"
 
 servers:

@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Earning API"
   description: |
-    API for manager blogger earnings
+    API for managing blogger earnings
   version: "1.0.0"
 
 servers:
@@ -70,7 +70,7 @@ components:
           format: date
         amount:
           type: number
-          format: double
+          format: int64
         currency:
           type: string
         syncDateTime:
