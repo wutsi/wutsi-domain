@@ -60,6 +60,28 @@ paths:
       tags:
         - Earnings
 
+  /v1/earnings/replay:
+    get:
+      operationId: "replay"
+      parameters:
+        - in: query
+          name: start-date
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: end-date
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        200:
+          description: Success
+      tags:
+        - Earnings
+
 components:
   schemas:
     SearchEarningResponse:
