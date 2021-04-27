@@ -205,6 +205,14 @@ components:
           type: string
           format: url
           example: "https://www.zesite.com"
+        language:
+          type: string
+          format: url
+          example: "fr"
+        currency:
+          type: string
+          format: url
+          example: "XFA"
         attributes:
           type: array
           items:
