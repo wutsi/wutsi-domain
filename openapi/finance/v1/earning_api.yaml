@@ -38,6 +38,28 @@ paths:
       tags:
         - Earnings
 
+  /v1/earnings/compute:
+    get:
+      operationId: "compute"
+      parameters:
+        - in: query
+          name: year
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: month
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Success
+      tags:
+        - Earnings
+
 components:
   schemas:
     SearchEarningResponse:
