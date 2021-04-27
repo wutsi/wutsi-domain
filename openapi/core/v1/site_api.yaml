@@ -209,10 +209,12 @@ components:
           type: string
           format: url
           example: "fr"
+          description: "Default language code of the site. The code is in the ISO0639-1 format"
         currency:
           type: string
           format: url
           example: "XFA"
+          description: "Default currency code of the site. The code is in the ISO-4217 format"
         attributes:
           type: array
           items:
