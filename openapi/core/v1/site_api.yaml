@@ -253,9 +253,19 @@ components:
         displayName:
           type: string
           example: "ZeSite"
+        language:
+          type: string
+          format: url
+          example: "fr"
+        currency:
+          type: string
+          format: url
+          example: "XFA"
       required:
         - name
         - domainName
+        - language
+        - currency
 
     UpdateSiteResponse:
       type: object
@@ -283,9 +293,19 @@ components:
         displayName:
           type: string
           example: "ZeSite"
+        language:
+          type: string
+          format: url
+          example: "fr"
+        currency:
+          type: string
+          format: url
+          example: "XFA"
       required:
         - name
         - domainName
+        - language
+        - currency
 
     CreateSiteResponse:
       type: object
