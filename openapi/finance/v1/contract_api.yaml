@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Contract API"
   description: |
-    API for manager blogger contracts
+    API for managing blogger contracts
   version: "1.0.0"
 
 servers:
@@ -23,7 +23,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchContractResponse'
       tags:
-        - Cantract
+        - Contract
 
 components:
   schemas:
