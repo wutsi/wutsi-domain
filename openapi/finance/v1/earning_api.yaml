@@ -69,13 +69,13 @@ paths:
           required: true
           schema:
             type: string
-            format: date-time
+            format: date
         - in: query
           name: end-date
-          required: true
           schema:
             type: string
-            format: date-time
+            format: date
+            nullable: true
       responses:
         200:
           description: Success
