@@ -14,7 +14,7 @@ servers:
 paths:
   /v1/earnings/users/{user-id}:
     get:
-      operationId: "user"
+      operationId: "userEarnings"
       parameters:
         - in: path
           name: user-id
