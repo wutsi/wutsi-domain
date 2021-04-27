@@ -30,7 +30,7 @@ components:
     SearchContractResponse:
       type: object
       properties:
-        views:
+        contracts:
           type: array
           items:
             $ref: "#/components/schemas/Contract"

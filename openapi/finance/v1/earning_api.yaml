@@ -65,7 +65,7 @@ components:
     SearchEarningResponse:
       type: object
       properties:
-        views:
+        earnings:
           type: array
           items:
             $ref: "#/components/schemas/Earning"
