@@ -54,6 +54,6 @@ components:
           nullable: true
         amount:
           type: number
-          format: double
+          format: int64
         currency:
           type: string
