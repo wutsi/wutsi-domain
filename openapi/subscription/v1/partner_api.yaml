@@ -2,7 +2,9 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Partner API"
   description: |
-    API for managing Wutsi Partner Program
+    Partner are User having a business relationship with Wutsi:
+    - A partner is paid based on the monthly read ratio of their stories
+    - A partner can set payment plans to get paid subscribers on his blog
   version: "1.0.0"
 
 servers:

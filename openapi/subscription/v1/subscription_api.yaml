@@ -1,0 +1,329 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Subscription API"
+  description: |
+    This API manages paid subscriptions
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-subscription-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-subscription-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/plans:
+    get:
+      operationId: "search-plans"
+      parameters:
+        - in: query
+          name: site-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: partner-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: status
+          schema:
+            type: string
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPlanResponse'
+      tags:
+        - Plans
+
+    post:
+      operationId: "create-plan"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePlanResponse"
+      tags:
+        - Plans
+
+  /v1/plans/{plan-id}:
+    post:
+      operationId: "update-plan"
+      parameters:
+        - in: path
+          name: plan-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlanRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePlanResponse"
+      tags:
+        - Plans
+
+
+  /v1/subscriptions:
+    get:
+      operationId: "search-subscriptions"
+      parameters:
+        - in: query
+          name: partner-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: site-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: status
+          schema:
+            type: string
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchSubscriptionResponse"
+
+    post:
+      operationId: "create-subscription"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateSubscriptionResponse"
+
+
+components:
+  schemas:
+    CreatePlanRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int64
+          required: true
+        siteId:
+          type: integer
+          format: int64
+          required: true
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+        yearlyAmount:
+          type: integer
+          format: int64
+          minimum: 1
+        monthlyAmount:
+          type: integer
+          format: int64
+          nullable: true
+
+    CreatePlanResponse:
+      type: object
+      properties:
+        planId:
+          type: integer
+          format: int64
+
+
+    UpdatePlanRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+        status:
+          type: string
+          required: true
+          description: "ACTIVE | INACTIVE"
+        yearlyAmount:
+          type: integer
+          format: int64
+          minimum: 1
+        monthlyAmount:
+          type: integer
+          format: int64
+          nullable: true
+
+    UpdatePlanResponse:
+      type: object
+      properties:
+        planId:
+          type: integer
+          format: int64
+
+
+    SearchPlanResponse:
+      type: object
+      properties:
+        plans:
+          type: array
+          items:
+            $ref: "#/components/schemas/Plan"
+
+    Plan:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partnerId:
+          type: integer
+          format: int64
+        siteId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        prices:
+          type: array
+          items:
+            $ref: "#/components/schemas/Price"
+
+    Price:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int64
+        currency:
+          type: string
+        frequency:
+          type: string
+          description: "YEARLY | QUARTERLY | MONTHLY"
+
+
+    CreateSubscriptionRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int64
+          required: true
+        planId:
+          type: integer
+          format: int64
+          required: true
+
+    CreateSubscriptionResponse:
+      type: object
+      properties:
+        subscriptionId: integer
+          type: integer
+          format: int64
+
+
+    SearchSubscriptionResponse:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Subscription"
+
+    GetSubscriptionResponse:
+      type: object
+      properties:
+        subscription:
+          type: object
+          $ref: "#/components/schemas/Subscription"
+
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        planId:
+          type: integer
+          format: int64
+        subscriberUserId:
+          type: integer
+          format: int64
+        amount:
+          type: integer
+          format: int64
+        currency:
+          type: integer
+          format: int64
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        status:
+          type: string
+          description: "PENDING | ACTIVE | CANCELLED | EXPIRED"
+        subscriptionDateTime:
+          type: string
+          format: date-time
