@@ -136,6 +136,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchSubscriptionResponse"
+      tags:
+        - Subscriptions
 
     post:
       operationId: "create-subscription"
@@ -152,6 +154,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSubscriptionResponse"
+      tags:
+        - Subscriptions
 
 
 components:
