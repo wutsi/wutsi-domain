@@ -162,14 +162,11 @@ components:
         partnerId:
           type: integer
           format: int64
-          required: true
         siteId:
           type: integer
           format: int64
-          required: true
         name:
           type: string
-          required: true
         description:
           type: string
         yearlyAmount:
@@ -180,6 +177,10 @@ components:
           type: integer
           format: int64
           nullable: true
+      required:
+        - partnerId
+        - siteId
+        - name
 
     CreatePlanResponse:
       type: object
@@ -194,12 +195,10 @@ components:
       properties:
         name:
           type: string
-          required: true
         description:
           type: string
         status:
           type: string
-          required: true
           description: "ACTIVE | INACTIVE"
         yearlyAmount:
           type: integer
@@ -209,6 +208,9 @@ components:
           type: integer
           format: int64
           nullable: true
+      required:
+        - name
+        - status
 
     UpdatePlanResponse:
       type: object
@@ -268,16 +270,14 @@ components:
         partnerId:
           type: integer
           format: int64
-          required: true
         planId:
           type: integer
           format: int64
-          required: true
 
     CreateSubscriptionResponse:
       type: object
       properties:
-        subscriptionId: integer
+        subscriptionId:
           type: integer
           format: int64
 
