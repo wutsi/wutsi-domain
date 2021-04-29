@@ -15,6 +15,17 @@ paths:
   /v1/contracts/active:
     get:
       operationId: "active"
+      description: |
+        Return all active contract.
+        - If a date is not provided, it will return all the current active contracts
+        - If a date is provided, it will return all the active contract at that dte.
+      parameters:
+        - in: path
+          name: date
+          schema:
+            type: string
+            format: date
+            nullable: true
       responses:
         200:
           description: Success
