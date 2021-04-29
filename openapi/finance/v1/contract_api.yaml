@@ -20,7 +20,7 @@ paths:
         - If a date is not provided, it will return all the current active contracts
         - If a date is provided, it will return all the active contract at that dte.
       parameters:
-        - in: path
+        - in: query
           name: date
           schema:
             type: string
