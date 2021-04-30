@@ -48,12 +48,14 @@ paths:
           schema:
             type: integer
             format: int32
+            required: true
         - in: query
           name: month
           required: true
           schema:
             type: integer
             format: int32
+            required: true
       responses:
         200:
           description: Success
@@ -70,6 +72,7 @@ paths:
           schema:
             type: string
             format: date
+            required: true
         - in: query
           name: end-date
           schema:
