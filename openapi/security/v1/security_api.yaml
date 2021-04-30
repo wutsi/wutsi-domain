@@ -51,6 +51,24 @@ paths:
       tags:
         - Security
 
+    post:
+      operationId: "update"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateApiKeyRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateApiKeyResponse'
+      tags:
+        - Security
+
     delete:
       operationId: "delete"
       parameters:
@@ -83,6 +101,26 @@ components:
         - scopes
 
     CreateApiKeyResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+
+    UpdateApiKeyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - scopes
+
+    UpdateApiKeyResponse:
       type: object
       properties:
         id:
