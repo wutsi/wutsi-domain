@@ -35,7 +35,7 @@ paths:
     get:
       operationId: "get"
       parameters:
-        - in: query
+        - in: path
           name: id
           required: true
           schema:
@@ -53,6 +53,13 @@ paths:
 
     post:
       operationId: "update"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
       requestBody:
         required: true
         content:
@@ -72,7 +79,7 @@ paths:
     delete:
       operationId: "delete"
       parameters:
-        - in: query
+        - in: path
           name: id
           required: true
           schema:
