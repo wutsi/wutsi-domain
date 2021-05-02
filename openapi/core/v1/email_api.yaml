@@ -25,6 +25,8 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'email' ]
       tags:
         - Email
 
@@ -58,10 +60,18 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'email' ]
       tags:
         - Mailing List
 
 components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
   schemas:
     SendEmailRequest:
       type: object
