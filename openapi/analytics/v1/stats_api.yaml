@@ -64,6 +64,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchViewResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - Views
 
@@ -90,6 +92,8 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'stats.admin' ]
       tags:
         - Views
 
@@ -117,6 +121,8 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'stats.admin' ]
       tags:
         - Views
 
@@ -173,6 +179,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchStoryKpiResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - KPI
 
@@ -227,6 +235,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchStoryKpiResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - KPI
 
@@ -273,6 +283,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchUserKpiResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - KPI
 
@@ -299,6 +311,8 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - KPI
 
@@ -342,6 +356,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchUserTrafficResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - Traffic
 
@@ -384,6 +400,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchStoryTrafficResponse'
+      security:
+        - api_key: [ 'stats' ]
       tags:
         - Traffic
 
@@ -395,10 +413,18 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'stats.admin' ]
       tags:
         - Migration
 
 components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
   schemas:
     SearchViewResponse:
       type: object
