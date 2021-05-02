@@ -35,11 +35,6 @@ paths:
       operationId: "search"
       parameters:
         - in: query
-          name: name
-          schema:
-            type: string
-            nullable: true
-        - in: query
           name: limit
           schema:
             type: integer
