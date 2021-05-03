@@ -202,17 +202,11 @@ components:
           type: string
         description:
           type: string
-        status:
-          type: string
-          description: "ACTIVE | INACTIVE"
-        yearlyAmount:
-          type: integer
-          format: int64
-          minimum: 1
-        monthlyAmount:
-          type: integer
-          format: int64
-          nullable: true
+        active:
+          type: boolean
+        price:
+          type: object
+          $ref: "#/components/schemas/PlanPrice"
       required:
         - name
         - status
@@ -259,11 +253,14 @@ components:
         monthlyAmount:
           type: integer
           format: int64
+          minimum: 1
         yearlyAmount:
           type: integer
           format: int64
+          minimum: 1
         currency:
           type: string
+          required: true
 
 
     CreateSubscriptionRequest:
