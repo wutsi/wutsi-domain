@@ -27,6 +27,8 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'linkedin' ]
       tags:
         - LinkedIn
 
@@ -51,6 +53,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StoreSecretResponse'
+      security:
+        - api_key: [ 'linkedin' ]
       tags:
         - LinkedIn
 
@@ -69,10 +73,18 @@ paths:
       responses:
         200:
           description: Success
+      security:
+        - api_key: [ 'linkedin' ]
       tags:
         - LinkedIn
 
 components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
   schemas:
     StoreSecretRequest:
       type: object
