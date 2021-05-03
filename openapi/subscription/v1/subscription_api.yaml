@@ -44,6 +44,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchPlanResponse'
+      security:
+        - api_key: [ 'subscription' ]
       tags:
         - Plans
 
@@ -62,6 +64,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreatePlanResponse"
+      security:
+        - api_key: [ 'subscription' ]
       tags:
         - Plans
 
@@ -88,6 +92,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdatePlanResponse"
+      security:
+        - api_key: [ 'subscription' ]
       tags:
         - Plans
 
@@ -130,6 +136,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchSubscriptionResponse"
+      security:
+        - api_key: [ 'subscription' ]
       tags:
         - Subscriptions
 
@@ -148,11 +156,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSubscriptionResponse"
+      security:
+        - api_key: [ 'subscription' ]
       tags:
         - Subscriptions
 
 
 components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
   schemas:
     CreatePlanRequest:
       type: object
@@ -164,14 +180,9 @@ components:
           type: string
         description:
           type: string
-        yearlyAmount:
-          type: integer
-          format: int64
-          minimum: 1
-        monthlyAmount:
-          type: integer
-          format: int64
-          nullable: true
+        price:
+          type: object
+          $ref: "#/components/schemas/PlanPrice"
       required:
         - partnerId
         - name
@@ -235,24 +246,24 @@ components:
           type: string
         description:
           type: string
-        status:
-          type: string
-        prices:
-          type: array
-          items:
-            $ref: "#/components/schemas/Price"
+        active:
+          type: boolean
+          default: true
+        price:
+          type: object
+          $ref: "#/components/schemas/PlanPrice"
 
-    Price:
+    PlanPrice:
       type: object
       properties:
-        amount:
+        monthlyAmount:
+          type: integer
+          format: int64
+        yearlyAmount:
           type: integer
           format: int64
         currency:
           type: string
-        frequency:
-          type: string
-          description: "YEARLY | QUARTERLY | MONTHLY"
 
 
     CreateSubscriptionRequest:
@@ -297,13 +308,7 @@ components:
         planId:
           type: integer
           format: int64
-        subscriberUserId:
-          type: integer
-          format: int64
-        amount:
-          type: integer
-          format: int64
-        currency:
+        subscriberId:
           type: integer
           format: int64
         startDate:
@@ -315,6 +320,18 @@ components:
         status:
           type: string
           description: "PENDING | ACTIVE | CANCELLED | EXPIRED"
+        price:
+          type: object
+          $ref: "#/components/schemas/Price"
         subscriptionDateTime:
           type: string
           format: date-time
+
+    Price:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int64
+        currency:
+          type: string
