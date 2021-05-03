@@ -17,12 +17,6 @@ paths:
       operationId: "search-plans"
       parameters:
         - in: query
-          name: site-id
-          schema:
-            type: integer
-            format: int64
-            nullable: true
-        - in: query
           name: partner-id
           schema:
             type: integer
@@ -166,9 +160,6 @@ components:
         partnerId:
           type: integer
           format: int64
-        siteId:
-          type: integer
-          format: int64
         name:
           type: string
         description:
@@ -183,7 +174,6 @@ components:
           nullable: true
       required:
         - partnerId
-        - siteId
         - name
 
     CreatePlanResponse:
@@ -239,9 +229,6 @@ components:
           type: integer
           format: int64
         partnerId:
-          type: integer
-          format: int64
-        siteId:
           type: integer
           format: int64
         name:
