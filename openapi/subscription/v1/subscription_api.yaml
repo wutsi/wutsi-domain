@@ -137,7 +137,6 @@ paths:
           schema:
             type: integer
             format: int64
-            nullable: true
       responses:
         200:
           description: Success
