@@ -104,6 +104,28 @@ paths:
       tags:
         - Subscription
 
+  /v1/subscriptions/{subscription-id}:
+    get:
+      operationId: "get-subscription"
+      parameters:
+        - in: path
+          name: subscription-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSubscriptionResponse"
+      security:
+        - api_key: [ 'subscription' ]
+      tags:
+        - Subscription
+
 
   /v1/partners/{partner-id}/plans:
     get:
@@ -161,6 +183,9 @@ components:
     CreatePlanRequest:
       type: object
       properties:
+        siteId:
+          type: integer
+          format: int64
         partnerId:
           type: integer
           format: int64
@@ -226,6 +251,9 @@ components:
       type: object
       properties:
         id:
+          type: integer
+          format: int64
+        siteId:
           type: integer
           format: int64
         partnerId:
@@ -296,6 +324,9 @@ components:
       type: object
       properties:
         id:
+          type: integer
+          format: int64
+        siteId:
           type: integer
           format: int64
         planId:
