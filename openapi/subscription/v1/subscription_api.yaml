@@ -82,7 +82,7 @@ paths:
       tags:
         - Plans
 
-  /v1/partner/{partner-id}/plans:
+  /v1/partners/{partner-id}/plans:
     get:
       operationId: "partner-plans"
       parameters:
