@@ -70,6 +70,11 @@ paths:
           schema:
             type: integer
             format: int64
+        - in: query
+          name: currency
+          schema:
+            type: string
+            nullable: true
       responses:
         200:
           description: Success
@@ -137,6 +142,11 @@ paths:
           schema:
             type: integer
             format: int64
+        - in: query
+          name: currency
+          schema:
+            type: string
+            nullable: true
       responses:
         200:
           description: Success
@@ -193,11 +203,19 @@ components:
           type: string
         description:
           type: string
-        price:
-          type: object
-          $ref: "#/components/schemas/PlanPrice"
+        monthlyRate:
+          type: integer
+          format: int64
+          minimum: 1
+        yearlyRate:
+          type: integer
+          format: int64
+          minimum: 1
+        currency:
+          type: string
       required:
         - partnerId
+        - siteId
         - name
 
     CreatePlanResponse:
@@ -206,7 +224,6 @@ components:
         planId:
           type: integer
           format: int64
-
 
     UpdatePlanRequest:
       type: object
@@ -217,12 +234,16 @@ components:
           type: string
         active:
           type: boolean
-        price:
-          type: object
-          $ref: "#/components/schemas/PlanPrice"
+        monthlyRate:
+          type: integer
+          format: int64
+          minimum: 1
+        yearlyRate:
+          type: integer
+          format: int64
+          minimum: 1
       required:
         - name
-        - status
 
     UpdatePlanResponse:
       type: object
@@ -266,25 +287,31 @@ components:
         active:
           type: boolean
           default: true
-        price:
+        rate:
           type: object
-          $ref: "#/components/schemas/PlanPrice"
+          $ref: "#/components/schemas/PlanRate"
+        targetRate:
+          type: object
+          $ref: "#/components/schemas/PlanRate"
 
-    PlanPrice:
+    PlanRate:
       type: object
       properties:
-        monthlyAmount:
+        id:
           type: integer
           format: int64
-          minimum: 1
-        yearlyAmount:
+        monthly:
           type: integer
           format: int64
-          minimum: 1
+        yearly:
+          type: integer
+          format: int64
         currency:
           type: string
-      required:
-        - currency
+        exchangeRate:
+          type: number
+          format: double
+          nullable: true
 
 
     CreateSubscriptionRequest:
