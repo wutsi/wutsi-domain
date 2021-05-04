@@ -31,7 +31,7 @@ paths:
       security:
         - api_key: [ 'subscription' ]
       tags:
-        - Plans
+        - Plan
 
   /v1/plans/{plan-id}:
     post:
@@ -59,7 +59,7 @@ paths:
       security:
         - api_key: [ 'subscription' ]
       tags:
-        - Plans
+        - Plan
 
     get:
       operationId: "get-plan"
@@ -80,73 +80,10 @@ paths:
       security:
         - api_key: [ 'subscription' ]
       tags:
-        - Plans
+        - Plan
 
-  /v1/partners/{partner-id}/plans:
-    get:
-      operationId: "partner-plans"
-      parameters:
-        - in: query
-          name: partner-id
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchPlanResponse'
-      security:
-        - api_key: [ 'subscription' ]
-      tags:
-        - Plans
 
   /v1/subscriptions:
-    get:
-      operationId: "search-subscriptions"
-      parameters:
-        - in: query
-          name: partner-id
-          schema:
-            type: integer
-            format: int64
-            nullable: true
-        - in: query
-          name: site-id
-          schema:
-            type: integer
-            format: int64
-            nullable: true
-        - in: query
-          name: status
-          schema:
-            type: string
-            nullable: true
-        - in: query
-          name: limit
-          schema:
-            type: integer
-            default: 20
-        - in: query
-          name: offset
-          schema:
-            type: integer
-            default: 0
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SearchSubscriptionResponse"
-      security:
-        - api_key: [ 'subscription' ]
-      tags:
-        - Subscriptions
-
     post:
       operationId: "create-subscription"
       requestBody:
@@ -165,7 +102,53 @@ paths:
       security:
         - api_key: [ 'subscription' ]
       tags:
-        - Subscriptions
+        - Subscription
+
+
+  /v1/partners/{partner-id}/plans:
+    get:
+      operationId: "partner-plans"
+      parameters:
+        - in: path
+          name: partner-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPlanResponse'
+      security:
+        - api_key: [ 'subscription' ]
+      tags:
+        - Partner
+
+  /v1/partners/{partner-id}/subscriptions:
+    get:
+      operationId: "partner-subscriptions"
+      parameters:
+        - in: path
+          name: partner-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchSubscriptionResponse"
+      security:
+        - api_key: [ 'subscription' ]
+      tags:
+        - Partner
 
 
 components:
