@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Partner API"
   description: |
-    Partner are User having a business relationship with Wutsi:
+    Partner are parties having a business relationship with Wutsi:
     - A partner is paid based on the monthly read ratio of their stories
     - A partner can set payment plans to get paid subscribers on his blog
   version: "1.0.0"
@@ -54,6 +54,10 @@ components:
         id:
           type: integer
           format: int64
+        siteId:
+          type: integer
+          format: int64
+          default: 1
         userId:
           type: integer
           format: int64
