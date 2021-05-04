@@ -269,6 +269,9 @@ components:
         planId:
           type: integer
           format: int64
+        subscriberId:
+          type: integer
+          format: int64
 
     CreateSubscriptionResponse:
       type: object
