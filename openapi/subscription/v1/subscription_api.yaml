@@ -263,9 +263,6 @@ components:
     CreateSubscriptionRequest:
       type: object
       properties:
-        partnerId:
-          type: integer
-          format: int64
         planId:
           type: integer
           format: int64
