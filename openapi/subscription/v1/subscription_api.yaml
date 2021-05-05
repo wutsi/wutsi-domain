@@ -290,7 +290,7 @@ components:
         rate:
           type: object
           $ref: "#/components/schemas/PlanRate"
-        targetRate:
+        convertedRate:
           type: object
           $ref: "#/components/schemas/PlanRate"
 
