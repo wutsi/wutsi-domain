@@ -57,6 +57,28 @@ paths:
       tags:
         - Orders
 
+  /v1/payment:
+    post:
+      operationId: "create-payment"
+      description: "Record a new payment"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderResponse'
+      security:
+        - api_key: [ order.pay ]
+      tags:
+        - Orders
+
 
 components:
   securitySchemes:

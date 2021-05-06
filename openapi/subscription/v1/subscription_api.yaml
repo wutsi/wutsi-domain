@@ -29,7 +29,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CreatePlanResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'plan-manage' ]
       tags:
         - Plan
 
@@ -57,7 +57,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/UpdatePlanResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'plan-manage' ]
       tags:
         - Plan
 
@@ -83,7 +83,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GetPlanResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'plan-read' ]
       tags:
         - Plan
 
@@ -105,7 +105,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CreateSubscriptionResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'subscription-manage' ]
       tags:
         - Subscription
 
@@ -127,7 +127,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/GetSubscriptionResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'subscription-read' ]
       tags:
         - Subscription
 
@@ -155,7 +155,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchPlanResponse'
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'plan-read' ]
       tags:
         - Partner
 
@@ -188,7 +188,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/SearchSubscriptionResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'subscription-read' ]
       tags:
         - Partner
 
@@ -215,7 +215,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/CountSubscriptionResponse"
       security:
-        - api_key: [ 'subscription' ]
+        - api_key: [ 'subscription-read' ]
       tags:
         - Partner
 
