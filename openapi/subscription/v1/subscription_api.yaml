@@ -171,10 +171,9 @@ paths:
             format: int64
         - in: query
           name: status
-          required: false
+          required: true
           schema:
             type: string
-            nullable: true
         - in: query
           name: subscriberId
           required: false
@@ -205,10 +204,9 @@ paths:
             format: int64
         - in: query
           name: status
-          required: false
+          required: true
           schema:
             type: string
-            nullable: true
       responses:
         200:
           description: Success
