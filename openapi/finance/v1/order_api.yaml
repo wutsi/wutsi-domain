@@ -78,19 +78,20 @@ components:
           type: integer
           format: int64
           nullable: true
-          description: "ID of the user for who the Order is created"
-        planId:
+          description: "ID of the user who placed the Order"
+        productId:
           type: integer
           format: int64
           nullable: true
-          description: "ID of the Plan"
-        planRateId:
+          description: "ID of the product purchased by this Order"
+        productRateId:
           type: integer
           format: int64
           nullable: true
-          description: "ID of the Plan's rate"
+          description: "ID of product's rate"
         description:
           type: string
+          description: "Description of the order"
         price:
           type: integer
           format: int64
@@ -133,17 +134,21 @@ components:
           type: integer
           format: int64
           description: "ID of the site associated with the Order"
-        planId:
+        productId:
           type: integer
           format: int64
-          description: "ID of the Plan for which the order is created"
-        planRateId:
+          description: "ID of the product purchased by the Order"
+        productRateId:
           type: integer
           format: int64
-          description: "ID of the rate of the Plan"
+          description: "ID of the product's rate"
+        customerId:
+          type: integer
+          format: int64
+          description: "ID of the user who placed the Order"
         description:
           type: string
-          description: "Human friendly description of the Order"
+          description: "Description of the Order"
         price:
           type: integer
           format: int64
