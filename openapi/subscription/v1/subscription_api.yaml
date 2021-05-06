@@ -178,7 +178,8 @@ paths:
           name: subscriberId
           required: false
           schema:
-            type: string
+            type: number
+            format: int64
             nullable: true
       responses:
         200:
