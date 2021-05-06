@@ -225,6 +225,7 @@ components:
           type: integer
           format: int64
 
+
     UpdatePlanRequest:
       type: object
       properties:
@@ -323,6 +324,9 @@ components:
         subscriberId:
           type: integer
           format: int64
+        orderId:
+          type: integer
+          format: int64
 
     CreateSubscriptionResponse:
       type: object
@@ -362,6 +366,9 @@ components:
         subscriberId:
           type: integer
           format: int64
+        orderId:
+          type: integer
+          format: int64
         startDate:
           type: string
           format: date
@@ -370,19 +377,7 @@ components:
           format: date
         status:
           type: string
-          description: "PENDING | ACTIVE | CANCELLED | EXPIRED"
-        price:
-          type: object
-          $ref: "#/components/schemas/Price"
+          description: "ACTIVE | CANCELLED | EXPIRED"
         subscriptionDateTime:
           type: string
           format: date-time
-
-    Price:
-      type: object
-      properties:
-        amount:
-          type: integer
-          format: int64
-        currency:
-          type: string
