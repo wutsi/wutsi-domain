@@ -169,6 +169,18 @@ paths:
           schema:
             type: integer
             format: int64
+        - in: query
+          name: status
+          required: false
+          schema:
+            type: string
+            nullable: true
+        - in: query
+          name: subscriberId
+          required: false
+          schema:
+            type: string
+            nullable: true
       responses:
         200:
           description: Success
@@ -176,6 +188,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchSubscriptionResponse"
+      security:
+        - api_key: [ 'subscription' ]
+      tags:
+        - Partner
+
+  /v1/partners/{partner-id}/subscriptions/count:
+    get:
+      operationId: "partner-subscriptions-count"
+      parameters:
+        - in: path
+          name: partner-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: status
+          required: false
+          schema:
+            type: string
+            nullable: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountSubscriptionResponse"
       security:
         - api_key: [ 'subscription' ]
       tags:
@@ -388,3 +428,10 @@ components:
         subscriptionDateTime:
           type: string
           format: date-time
+
+    CountSubscriptionResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+
