@@ -433,4 +433,5 @@ components:
       properties:
         count:
           type: integer
+          format: int64
 
