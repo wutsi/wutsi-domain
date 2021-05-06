@@ -208,7 +208,6 @@ components:
         monthlyRate:
           type: integer
           format: int64
-          minimum: 1
         yearlyRate:
           type: integer
           format: int64
@@ -240,13 +239,10 @@ components:
         monthlyRate:
           type: integer
           format: int64
-          minimum: 1
-          nullable: true
         yearlyRate:
           type: integer
           format: int64
           minimum: 1
-          nullable: true
       required:
         - name
 
