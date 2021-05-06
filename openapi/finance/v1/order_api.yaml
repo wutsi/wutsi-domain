@@ -114,10 +114,9 @@ components:
         description:
           type: string
           description: "Description of the order"
-        price:
+        total:
           type: integer
           format: int64
-          minimum: 1
           description: "Total price of the order"
         currency:
           type: string
