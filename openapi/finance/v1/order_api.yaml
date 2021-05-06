@@ -36,6 +36,8 @@ paths:
 
   /v1/orders/{order-id}:
     get:
+      operationId: "get-order"
+      description: "Get an order"
       parameters:
         - in: path
           name: order-id
