@@ -175,7 +175,7 @@ paths:
           schema:
             type: string
         - in: query
-          name: subscriberId
+          name: subscriber-id
           required: false
           schema:
             type: number
