@@ -171,7 +171,7 @@ components:
         description:
           type: string
           description: "Description of the Order"
-        price:
+        total:
           type: integer
           format: int64
           description: "Total price of Order"
