@@ -176,7 +176,6 @@ paths:
             type: string
         - in: query
           name: subscriber-id
-          required: false
           schema:
             type: number
             format: int64
@@ -195,7 +194,7 @@ paths:
 
   /v1/partners/{partner-id}/subscriptions/count:
     get:
-      operationId: "partner-subscriptions-count"
+      operationId: "partner-subscription-count"
       parameters:
         - in: path
           name: partner-id

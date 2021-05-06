@@ -1,0 +1,158 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Order API"
+  description: |
+    API for managing orders: creating orders and accepting payments
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-order-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-order-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/orders:
+    post:
+      operationId: "create-order"
+      description: "Create a new order"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderResponse'
+      security:
+        - api_key: [ order ]
+      tags:
+        - Orders
+
+  /v1/orders/{order-id}:
+    get:
+      parameters:
+        - in: path
+          name: order-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrderResponse'
+      security:
+        - api_key: [ order ]
+      tags:
+        - Orders
+
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    CreateOrderRequest:
+      type: object
+      properties:
+        siteId:
+          type: integer
+          format: int64
+          nullable: true
+          description: "ID of the Site"
+        customerId:
+          type: integer
+          format: int64
+          nullable: true
+          description: "ID of the user for who the Order is created"
+        planId:
+          type: integer
+          format: int64
+          nullable: true
+          description: "ID of the Plan"
+        planRateId:
+          type: integer
+          format: int64
+          nullable: true
+          description: "ID of the Plan's rate"
+        description:
+          type: string
+        price:
+          type: integer
+          format: int64
+          minimum: 1
+          description: "Total price of the order"
+        currency:
+          type: string
+          description: "ISO-4217 3 letters code of the currency"
+      required:
+        - siteId
+        - planId
+        - planRateId
+        - description
+        - currency
+
+    CreateOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int64
+          description: "ID of the Order created"
+
+
+    GetOrderResponse:
+      type: object
+      properties:
+        order:
+          type: object
+          $ref: "#/components/schemas/Order"
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: "Order unique identifier"
+        siteId:
+          type: integer
+          format: int64
+          description: "ID of the site associated with the Order"
+        planId:
+          type: integer
+          format: int64
+          description: "ID of the Plan for which the order is created"
+        planRateId:
+          type: integer
+          format: int64
+          description: "ID of the rate of the Plan"
+        description:
+          type: string
+          description: "Human friendly description of the Order"
+        price:
+          type: integer
+          format: int64
+          description: "Total price of Order"
+        currency:
+          type: string
+          description: "ISO-4217 3 letters code of the currency"
+        status:
+          type: string
+          description: "Status of the order"
+        creationDateTime:
+          type: string
+          format: date-time
+          description: "Date/Time when the order was created"
