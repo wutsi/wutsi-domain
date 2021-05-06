@@ -241,10 +241,12 @@ components:
           type: integer
           format: int64
           minimum: 1
+          nullable: true
         yearlyRate:
           type: integer
           format: int64
           minimum: 1
+          nullable: true
       required:
         - name
 
