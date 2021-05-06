@@ -30,7 +30,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateOrderResponse'
       security:
-        - api_key: [ order ]
+        - api_key: [ order-manage ]
       tags:
         - Orders
 
@@ -53,7 +53,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetOrderResponse'
       security:
-        - api_key: [ order ]
+        - api_key: [ order-read ]
       tags:
         - Orders
 
@@ -75,9 +75,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateOrderResponse'
       security:
-        - api_key: [ order.pay ]
+        - api_key: [ payment-manage ]
       tags:
-        - Orders
+        - Payment
 
 
 components:
