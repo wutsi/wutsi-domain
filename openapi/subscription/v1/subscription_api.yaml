@@ -196,9 +196,11 @@ components:
         siteId:
           type: integer
           format: int64
+          nullable: true
         partnerId:
           type: integer
           format: int64
+          nullable: true
         name:
           type: string
         description:
@@ -321,12 +323,19 @@ components:
         planId:
           type: integer
           format: int64
+          nullable: true
         subscriberId:
           type: integer
           format: int64
+          nullable: true
         orderId:
           type: integer
           format: int64
+          nullable: true
+      required:
+        - planId
+        - subscriberId
+        - orderId
 
     CreateSubscriptionResponse:
       type: object
