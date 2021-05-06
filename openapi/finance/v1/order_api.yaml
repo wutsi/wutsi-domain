@@ -199,6 +199,12 @@ components:
           format: int64
         currency:
           type: string
+        externalId:
+          type: string
+      required:
+        - provided
+        - externalId
+        - currency
 
     CreatePaymentResponse:
       type: object
