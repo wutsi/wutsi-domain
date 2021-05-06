@@ -185,3 +185,26 @@ components:
           type: string
           format: date-time
           description: "Date/Time when the order was created"
+
+
+    CreatePaymentRequest:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int64
+        provider:
+          type: string
+        amount:
+          type: integer
+          format: int64
+        currency:
+          type: string
+
+    CreatePaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: integer
+          format: int64
+          description: "ID of the Payment created"
