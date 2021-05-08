@@ -71,7 +71,7 @@ paths:
 
   /v1/replay/daily:
     get:
-      operationId: "replayDaily"
+      operationId: "replay-daily"
       summary: "Rebuild daily statistics"
       description: |
         This process will rebuild the daily statistic by reprocessing all the user interaction messages from S3 for the provided start/end date.
@@ -99,7 +99,7 @@ paths:
 
   /v1/replay/monthly:
     get:
-      operationId: "replayMonthly"
+      operationId: "replay-monthly"
       summary: "Rebuild monthly statistics"
       description: |
         This process will rebuild the monthly statistic.
@@ -129,7 +129,7 @@ paths:
 
   /v1/kpis/stories/daily:
     get:
-      operationId: "storyDailyKpis"
+      operationId: "story-daily-kpis"
       summary: "Story Daily KPIs"
       parameters:
         - in: query
@@ -186,7 +186,7 @@ paths:
 
   /v1/kpis/stories/monthly:
     get:
-      operationId: "storyMonthlyKpis"
+      operationId: "story-monthly-kpis"
       summary: "Story Monthly KPIs"
       parameters:
         - in: query
@@ -242,7 +242,7 @@ paths:
 
   /v1/kpis/users/{user-id}/monthly:
     get:
-      operationId: "userMonthlyKpis"
+      operationId: "user-monthly-kpis"
       summary: "User Monthly KPIs"
       parameters:
         - in: path
@@ -290,7 +290,7 @@ paths:
 
   /v1/kpis/users/{user-id}/monthly/email:
     get:
-      operationId: "emailUserMonthlyKpis"
+      operationId: "email-user-monthly-kpis"
       summary: "Send via email Monthly KPIs to a user"
       parameters:
         - in: path
@@ -318,7 +318,7 @@ paths:
 
   /v1/kpis/users/monthly/email:
     get:
-      operationId: "emailAllUsersMonthlyKpis"
+      operationId: "email-monthly-kpis"
       summary: "Send via email Monthly KPIs to all user"
       parameters:
         - in: query
@@ -342,7 +342,7 @@ paths:
 
   /v1/traffics/users/{user-id}/monthly:
     get:
-      operationId: "userMonthlyTraffic"
+      operationId: "user-monthly-traffic"
       summary: "User Monthly Traffic"
       parameters:
         - in: path
@@ -386,7 +386,7 @@ paths:
 
   /v1/traffics/stories/{story-id}/monthly:
     get:
-      operationId: "storyMonthlyTraffic"
+      operationId: "story-monthly-traffic"
       summary: "Story Monthly Traffic"
       parameters:
         - in: path
@@ -431,7 +431,7 @@ paths:
 
   /v1/stories/import:
     get:
-      operationId: "importStories"
+      operationId: "import-stories"
       summary: "Import stories"
       responses:
         200:
