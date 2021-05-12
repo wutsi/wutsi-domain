@@ -106,7 +106,7 @@ paths:
         200:
           description: Success
       security:
-        - api_key: [ 'site-read' ]
+        - api_key: [ 'site-manage' ]
       tags:
         - Site
 
