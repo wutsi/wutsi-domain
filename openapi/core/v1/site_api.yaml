@@ -231,7 +231,7 @@ components:
           format: url
           example: "XFA"
           description: "Default currency code of the site. The code is in the ISO-4217 format"
-        internaltionalCurrency:
+        internationalCurrency:
           type: string
           format: url
           example: "EUR"
