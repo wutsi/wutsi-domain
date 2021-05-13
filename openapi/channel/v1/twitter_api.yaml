@@ -28,7 +28,7 @@ paths:
         200:
           description: Success
       security:
-        - api_key: [ 'twitter' ]
+        - api_key: [ 'twitter-share' ]
       tags:
         - Twitter
 
@@ -54,7 +54,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StoreSecretResponse'
       security:
-        - api_key: [ 'twitter' ]
+        - api_key: [ 'twitter-manage' ]
       tags:
         - Twitter
 
@@ -74,7 +74,7 @@ paths:
         200:
           description: Success
       security:
-        - api_key: [ 'twitter' ]
+        - api_key: [ 'twitter-manage' ]
       tags:
         - Twitter
 
