@@ -36,7 +36,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchEarningResponse'
       security:
-        - api_key: [ earning ]
+        - api_key: [ earning-read ]
       tags:
         - Earnings
 
@@ -60,7 +60,7 @@ paths:
         200:
           description: Success
       security:
-        - api_key: [ 'earning.admin' ]
+        - api_key: [ 'earning-manage' ]
       tags:
         - Earnings
 
@@ -84,7 +84,7 @@ paths:
         200:
           description: Success
       security:
-        - api_key: [ 'earning.admin' ]
+        - api_key: [ 'earning-manage' ]
       tags:
         - Earnings
 
