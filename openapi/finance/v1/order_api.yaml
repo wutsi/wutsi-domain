@@ -115,8 +115,8 @@ components:
           type: string
           description: "Description of the order"
         total:
-          type: integer
-          format: int64
+          type: number
+          format: double
           description: "Total price of the order"
         currency:
           type: string
@@ -195,8 +195,11 @@ components:
         provider:
           type: string
         amount:
-          type: integer
-          format: int64
+          type: number
+          format: double
+        fees:
+          type: number
+          format: double
         currency:
           type: string
         externalId:
