@@ -307,6 +307,100 @@ components:
           items:
             $ref: "#/components/schemas/Plan"
 
+
+    CreateSubscriptionRequest:
+      type: object
+      properties:
+        planId:
+          type: integer
+          format: int64
+          nullable: true
+        subscriberId:
+          type: integer
+          format: int64
+          nullable: true
+        orderId:
+          type: integer
+          format: int64
+          nullable: true
+      required:
+        - planId
+        - subscriberId
+        - orderId
+
+    CreateSubscriptionResponse:
+      type: object
+      properties:
+        subscriptionId:
+          type: integer
+          format: int64
+
+
+    SearchSubscriptionResponse:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Subscription"
+
+    GetSubscriptionResponse:
+      type: object
+      properties:
+        subscription:
+          type: object
+          $ref: "#/components/schemas/Subscription"
+
+    CountSubscriptionResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID of the subscription
+        siteId:
+          type: integer
+          format: int64
+          description: ID of the site when the subscription was issued
+        plan:
+          type: object
+          $ref: "#/components/schemas/Plan"
+          description: Subscription's plan
+        subscriberId:
+          type: integer
+          format: int64
+          description: ID of the user who owns the subscription
+        orderId:
+          type: integer
+          format: int64
+          description: ID of the order associated with the subscription
+        startDate:
+          type: string
+          format: date
+          description: Date when the subcription starts
+        endDate:
+          type: string
+          format: date
+          description: Date when the subscription ends
+        status:
+          type: string
+          description: |
+            Status of the subscription. The values are:
+            - `ACTIVE`: The subscription is active
+            - `CANCELLED`: The subscription is no longer active
+            - `EXPIRED`: The subscription has expired
+        subscriptionDateTime:
+          type: string
+          format: date-time
+          description: Date of subscription
+
     Plan:
       type: object
       description: Subscription plan
@@ -365,98 +459,3 @@ components:
           format: double
           nullable: true
           description: Exchange rate used to compute the monthly and yearly rate.
-
-
-    CreateSubscriptionRequest:
-      type: object
-      properties:
-        planId:
-          type: integer
-          format: int64
-          nullable: true
-        subscriberId:
-          type: integer
-          format: int64
-          nullable: true
-        orderId:
-          type: integer
-          format: int64
-          nullable: true
-      required:
-        - planId
-        - subscriberId
-        - orderId
-
-    CreateSubscriptionResponse:
-      type: object
-      properties:
-        subscriptionId:
-          type: integer
-          format: int64
-
-
-    SearchSubscriptionResponse:
-      type: object
-      properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: "#/components/schemas/Subscription"
-
-    GetSubscriptionResponse:
-      type: object
-      properties:
-        subscription:
-          type: object
-          $ref: "#/components/schemas/Subscription"
-
-    Subscription:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: ID of the subscription
-        siteId:
-          type: integer
-          format: int64
-          description: ID of the site when the subscription was issued
-        plan:
-          type: object
-          $ref: "#/components/schemas/Plan"
-          description: Subscription's plan
-        subscriberId:
-          type: integer
-          format: int64
-          description: ID of the user who owns the subscription
-        orderId:
-          type: integer
-          format: int64
-          description: ID of the order associated with the subscription
-        startDate:
-          type: string
-          format: date
-          description: Date when the subcription starts
-        endDate:
-          type: string
-          format: date
-          description: Date when the subscription ends
-        status:
-          type: string
-          description: |
-            Status of the subscription. The values are:
-            - `ACTIVE`: The subscription is active
-            - `CANCELLED`: The subscription is no longer active
-            - `EXPIRED`: The subscription has expired
-        subscriptionDateTime:
-          type: string
-          format: date-time
-          description: Date of subscription
-
-    CountSubscriptionResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int64
-
