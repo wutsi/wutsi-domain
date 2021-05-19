@@ -332,7 +332,8 @@ components:
         active:
           type: boolean
           default: true
-          description: `true` if the Plan is still active
+          description: |
+            `true` if the Plan is still active
         rate:
           type: object
           $ref: "#/components/schemas/PlanRate"
