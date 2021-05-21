@@ -77,6 +77,12 @@ paths:
             type: integer
             format: int64
         - in: query
+          name: follower-user-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
           name: limit
           schema:
             type: integer
