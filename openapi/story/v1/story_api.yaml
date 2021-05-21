@@ -130,3 +130,10 @@ components:
         publishedDateTime:
           type: integer
           format: int64
+        access:
+          type: string
+          description: |
+            Access required to read the story. Possible values
+            - `PUBLIC`: Accessible by everyone
+            - `SUBSCRIBER`: Accessible only the blog subscriber
+            - `PREMIUM_SUBSCRIBER`: Accessible only on subscriber who paid their subscription
