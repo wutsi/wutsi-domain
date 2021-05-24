@@ -79,6 +79,40 @@ paths:
       tags:
         - Payment
 
+  /v1/transactions:
+    get:
+      operationId: "search-transaction"
+      description: "Search Transactions"
+      parameters:
+        - in: query
+          name: partner-id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: start-date
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end-date
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchTransactionResponse'
+      security:
+        - api_key: [ transaction-read ]
+      tags:
+        - Transactions
 
 components:
   securitySchemes:
@@ -96,7 +130,7 @@ components:
           format: int64
           nullable: true
           description: "ID of the Site"
-        customerId:
+        partnerId:
           type: integer
           format: int64
           nullable: true
@@ -163,7 +197,7 @@ components:
           type: integer
           format: int64
           description: "ID of the product's rate"
-        customerId:
+        partnerId:
           type: integer
           format: int64
           description: "ID of the user who placed the Order"
@@ -216,3 +250,54 @@ components:
           type: integer
           format: int64
           description: "ID of the Payment created"
+
+    SearchTransactionResponse:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: "Transaction unique identifier"
+        siteId:
+          type: integer
+          format: int64
+          description: "ID of the site"
+        partnerId:
+          type: integer
+          format: int64
+          description: "ID of the user who owns the transaction"
+        description:
+          type: string
+          description: "Description of the Transaction"
+          nullable: true
+        amount:
+          type: number
+          format: double
+          description: "Gross amount"
+        providerFees:
+          type: number
+          format: double
+          description: "Payment provider fees"
+        wutsiFees:
+          type: number
+          format: double
+          description: "Wutsi fees"
+        net:
+          type: number
+          format: double
+          description: "Net amount"
+        currency:
+          type: string
+          description: "ISO-4217 3 letters code of the currency"
+        transactionDateTime:
+          type: string
+          format: date-time
+          description: "Date/Time of the transaction"
