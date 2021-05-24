@@ -297,6 +297,9 @@ components:
         currency:
           type: string
           description: "ISO-4217 3 letters code of the currency"
+        type:
+          type: string
+          description: "Type of transaction"
         transactionDateTime:
           type: string
           format: date-time
