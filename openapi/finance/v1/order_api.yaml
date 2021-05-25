@@ -107,7 +107,7 @@ paths:
       operationId: "search-transaction"
       description: "Search Transactions"
       parameters:
-        - in: path
+        - in: query
           name: partner-id
           schema:
             type: integer
