@@ -104,7 +104,7 @@ paths:
 
   /v1/transactions:
     get:
-      operationId: "search-transactions"
+      operationId: "search-transaction"
       description: "Search Transactions"
       parameters:
         - in: path
