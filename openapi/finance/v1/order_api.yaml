@@ -79,17 +79,40 @@ paths:
       tags:
         - Payment
 
-  /v1/transactions:
+  /v1/partners/{partner-id}/wallet:
     get:
-      operationId: "search-transaction"
-      description: "Search Transactions"
+      operationId: "get-wallet"
+      description: "Get a partner wallet information"
       parameters:
-        - in: query
+        - in: path
           name: partner-id
           required: true
           schema:
             type: integer
             format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWalletResponse'
+      security:
+        - api_key: [ transaction-read ]
+      tags:
+        - Transaction
+
+  /v1/transactions:
+    get:
+      operationId: "search-transactions"
+      description: "Search Transactions"
+      parameters:
+        - in: path
+          name: partner-id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
         - in: query
           name: start-date
           required: true
@@ -112,7 +135,7 @@ paths:
       security:
         - api_key: [ transaction-read ]
       tags:
-        - Transactions
+        - Transaction
 
 components:
   securitySchemes:
@@ -250,6 +273,36 @@ components:
           type: integer
           format: int64
           description: "ID of the Payment created"
+
+
+    GetWalletResponse:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Wallet"
+
+    Wallet:
+      type: object
+      description: "Electronic wallet of a partner"
+      properties:
+        siteId:
+          type: integer
+          format: int64
+          description: "ID of the site"
+        partnerId:
+          type: integer
+          format: int64
+          description: "ID of the partner"
+        amount:
+          type: number
+          format: double
+          description: "Total amount in the partner's wallet"
+        currency:
+          type: string
+          description: "ISO-4217 3 letters code of the currency"
+
 
     SearchTransactionResponse:
       type: object
