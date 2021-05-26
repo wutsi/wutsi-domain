@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   title: "Wutsi Order API"
   description: |
-    API for managing orders: creating orders and accepting payments
+    API for managing orders and online payments
   version: "1.0.0"
 
 servers:
@@ -57,10 +57,34 @@ paths:
       tags:
         - Orders
 
+  /v1/payouts:
+    post:
+      operationId: "create-payout"
+      description: |
+        Create a payout for a partner.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePayoutRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePayoutResponse'
+      security:
+        - api_key: [ payout-manage ]
+      tags:
+        - Payout
+
   /v1/payments:
     post:
       operationId: "create-payment"
-      description: "Record a new payment"
+      description: |
+        Record a new payment.
       requestBody:
         required: true
         content:
@@ -357,3 +381,19 @@ components:
           type: string
           format: date-time
           description: "Date/Time of the transaction"
+
+
+    CreatePayoutRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int64
+
+
+    CreatePayoutResponse:
+      type: object
+      properties:
+        payoutId:
+          type: integer
+          format: int64
