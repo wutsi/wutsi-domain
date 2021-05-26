@@ -57,6 +57,7 @@ paths:
       tags:
         - Orders
 
+
   /v1/payouts:
     post:
       operationId: "create-payout"
@@ -103,13 +104,36 @@ paths:
       tags:
         - Payment
 
-  /v1/partners/{partner-id}/wallet:
+
+  /v1/wallets:
+    post:
+      operationId: "create-wallet"
+      description: "Create a partner wallet"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWalletRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWalletResponse'
+      security:
+        - api_key: [ wallet-read ]
+      tags:
+        - Wallet
+
+  /v1/wallets/{wallet-id}:
     get:
       operationId: "get-wallet"
-      description: "Get a partner wallet information"
+      description: "Get a partner wallet"
       parameters:
         - in: path
-          name: partner-id
+          name: wallet-id
           required: true
           schema:
             type: integer
@@ -122,9 +146,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetWalletResponse'
       security:
-        - api_key: [ transaction-read ]
+        - api_key: [ wallet-read ]
       tags:
-        - Transaction
+        - Wallet
+
+    post:
+      operationId: "update-wallet"
+      description: "Update a partner wallet"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWalletRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateWalletResponse'
+      security:
+        - api_key: [ wallet-read ]
+      tags:
+        - Wallet
+
+
 
   /v1/transactions:
     get:
@@ -299,6 +346,48 @@ components:
           description: "ID of the Payment created"
 
 
+    CreateWalletRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int64
+        siteId:
+          type: integer
+          format: int64
+        country:
+          type: string
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+
+    CreateWalletResponse:
+      type: object
+      properties:
+        walletId:
+          type: integer
+          format: int64
+
+
+    UpdateWalletRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+
+    UpdateWalletResponse:
+      type: object
+      properties:
+        walletId:
+          type: integer
+          format: int64
+
+
     GetWalletResponse:
       type: object
       properties:
@@ -325,6 +414,10 @@ components:
         currency:
           type: string
           description: "ISO-4217 3 letters code of the currency"
+        country:
+          type: string
+        phoneNumber:
+          type: string
 
 
     SearchTransactionResponse:
@@ -388,7 +481,6 @@ components:
         partnerId:
           type: integer
           format: int64
-
 
     CreatePayoutResponse:
       type: object
