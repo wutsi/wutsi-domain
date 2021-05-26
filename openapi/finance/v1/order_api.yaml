@@ -78,7 +78,7 @@ paths:
       security:
         - api_key: [ payout-manage ]
       tags:
-        - Payout
+        - Payment
 
   /v1/payments:
     post:
@@ -303,9 +303,8 @@ components:
       type: object
       properties:
         transactions:
-          type: array
-          items:
-            $ref: "#/components/schemas/Wallet"
+          type: object
+          $ref: "#/components/schemas/Wallet"
 
     Wallet:
       type: object
