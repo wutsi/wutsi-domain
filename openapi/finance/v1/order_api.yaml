@@ -361,6 +361,10 @@ components:
           type: string
         mobileProvider:
           type: string
+      required:
+        - country
+        - mobileNumber
+        - mobileProvider
 
     CreateWalletResponse:
       type: object
@@ -379,6 +383,10 @@ components:
           type: string
         mobileProvider:
           type: string
+      required:
+        - country
+        - mobileNumber
+        - mobileProvider
 
     UpdateWalletResponse:
       type: object
