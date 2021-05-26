@@ -123,7 +123,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateWalletResponse'
       security:
-        - api_key: [ wallet-read ]
+        - api_key: [ wallet-manage ]
       tags:
         - Wallet
 
@@ -167,7 +167,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UpdateWalletResponse'
       security:
-        - api_key: [ wallet-read ]
+        - api_key: [ wallet-manage ]
       tags:
         - Wallet
 
