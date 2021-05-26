@@ -302,7 +302,7 @@ components:
     GetWalletResponse:
       type: object
       properties:
-        transactions:
+        wallet:
           type: object
           $ref: "#/components/schemas/Wallet"
 
