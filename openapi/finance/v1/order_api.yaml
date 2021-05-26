@@ -153,6 +153,13 @@ paths:
     post:
       operationId: "update-wallet"
       description: "Update a partner wallet"
+      parameters:
+        - in: path
+          name: wallet-id
+          required: true
+          schema:
+            type: integer
+            format: int64
       requestBody:
         required: true
         content:
