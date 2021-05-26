@@ -431,7 +431,9 @@ components:
           description: "ISO-4217 3 letters code of the currency"
         country:
           type: string
-        phoneNumber:
+        mobileNumber:
+          type: string
+        mobileProvider:
           type: string
 
 
