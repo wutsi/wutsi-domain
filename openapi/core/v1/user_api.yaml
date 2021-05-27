@@ -14,7 +14,7 @@ servers:
 paths:
   /v1/users:
     get:
-      operationId: "search"
+      operationId: "users"
       summary: "Search Users"
       parameters:
         - in: query
