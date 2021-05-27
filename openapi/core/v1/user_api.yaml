@@ -42,9 +42,9 @@ paths:
       tags:
         - User
 
-  /v1/users/{id}:
+  /v1/users/{id}/wallet:
     get:
-      operationId: "get"
+      operationId: "wallet"
       summary: "Return the information of a user"
       parameters:
         - in: path
@@ -62,7 +62,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetUserResponse'
       tags:
-        - User
+        - Wallet
+
+    post:
+      operationId: "save-wallet"
+      summary: "Save user's wallet information"
+      parameters:
+        - in: path
+          name: id
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveWalletRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserResponse'
+      tags:
+        - Wallet
 
   /v1/users/{id}/followers:
     get:
@@ -140,6 +167,12 @@ components:
           nullable: true
         testUser:
           type: boolean
+        followerCount:
+          type: integer
+          format: int64
+        subscriberCount:
+          type: integer
+          format: int64
 
 
     SearchUserResponse:
@@ -179,6 +212,12 @@ components:
           nullable: true
         testUser:
           type: boolean
+        followerCount:
+          type: integer
+          format: int64
+        subscriberCount:
+          type: integer
+          format: int64
 
 
     SearchFollowerResponse:
@@ -198,3 +237,41 @@ components:
         followerUserId:
           type: integer
           format: int64
+
+
+    SaveWalletRequest:
+      type: object
+      properties:
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+        country:
+          type: string
+
+    SaveWalletResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+
+    GetWalletResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/Wallet"
+
+    Wallet:
+      type: object
+      properties:
+        type:
+          type: string
+        mobileNumber:
+          type: string
+        mobileProvider:
+          type: string
+        country:
+          type: string
