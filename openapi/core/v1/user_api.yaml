@@ -43,29 +43,8 @@ paths:
         - User
 
   /v1/users/{id}/wallet:
-    get:
-      operationId: "wallet"
-      summary: "Return the information of a user"
-      parameters:
-        - in: path
-          name: id
-          description: ID of the user
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserResponse'
-      tags:
-        - Wallet
-
     post:
-      operationId: "save-wallet"
+      operationId: "wallet"
       summary: "Save user's wallet information"
       parameters:
         - in: path
@@ -89,7 +68,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetUserResponse'
       tags:
-        - Wallet
+        - User
 
   /v1/users/{id}/followers:
     get:
@@ -173,6 +152,10 @@ components:
         subscriberCount:
           type: integer
           format: int64
+        wallet:
+          type: object
+          $ref: "#/components/schemas/Wallet"
+          nullable: true
 
 
     SearchUserResponse:
@@ -242,12 +225,19 @@ components:
     SaveWalletRequest:
       type: object
       properties:
+        type:
+          type: string
         mobileNumber:
           type: string
         mobileProvider:
           type: string
         country:
           type: string
+      required:
+        - type
+        - mobileNumber
+        - mobileProvider
+        - country
 
     SaveWalletResponse:
       type: object
@@ -255,14 +245,6 @@ components:
         userId:
           type: integer
           format: int64
-
-    GetWalletResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: "#/components/schemas/Wallet"
 
     Wallet:
       type: object
