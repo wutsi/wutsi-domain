@@ -14,7 +14,7 @@ servers:
 paths:
   /v1/users:
     get:
-      operationId: "users"
+      operationId: "search-users"
       summary: "Search Users"
       parameters:
         - in: query
@@ -44,7 +44,7 @@ paths:
 
   /v1/users/{id}/wallet:
     post:
-      operationId: "wallet"
+      operationId: "get-wallet"
       summary: "Save user's wallet information"
       parameters:
         - in: path
@@ -72,7 +72,7 @@ paths:
 
   /v1/users/{id}/followers:
     get:
-      operationId: "followers"
+      operationId: "search-followers"
       summary: "Return followers of a given user"
       parameters:
         - in: path
