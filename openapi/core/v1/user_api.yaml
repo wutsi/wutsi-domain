@@ -42,9 +42,31 @@ paths:
       tags:
         - User
 
+  /v1/users/{id}:
+    post:
+      operationId: "get-user"
+      summary: "Return user information"
+      parameters:
+        - in: path
+          name: id
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserResponse'
+      tags:
+        - User
+
   /v1/users/{id}/wallet:
     post:
-      operationId: "get-wallet"
+      operationId: "save-wallet"
       summary: "Save user's wallet information"
       parameters:
         - in: path
@@ -66,7 +88,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUserResponse'
+                $ref: '#/components/schemas/SaveWalletResponse'
       tags:
         - User
 
