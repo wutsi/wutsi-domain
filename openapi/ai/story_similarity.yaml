@@ -1,0 +1,71 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Story Similarity Model"
+  description: |
+    Machine Learning Model for finding similarities between stories.
+    Story similarity is computed based on:
+    - Title
+    - Topic
+    - Tags
+    - Author
+  version: "1.0.0"
+
+servers:
+  - url: https://story-similarity-model-test.herokuapp.com
+    description: Sandbox
+  - url: https://story-similarity-model-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/stories/{id}/similarities:
+    get:
+      operationId: "get"
+      summary: "Return similar Stories"
+      parameters:
+        - in: path
+          name: id
+          description: ID of the Story for which we want to find similar stories
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSimilarityResponse'
+      tags:
+        - Story
+
+
+components:
+  schemas:
+    GetSimilarityResponse:
+      type: object
+      properties:
+        similarities:
+          description: List of similar stories order by their descending score
+          type: array
+          items:
+            $ref: "#/components/schemas/Similarity"
+
+    Similarity:
+      type: object
+      properties:
+        storyId:
+          type: integer
+          format: int64
+          description: ID of the similar story.
+        score:
+          type: number
+          format: float
+          description: |
+            Similarity score - between `0` to `1`.
+            - `0` means that stories have no similaries
+            - `1` means perfect similarity
