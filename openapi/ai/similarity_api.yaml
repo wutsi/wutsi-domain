@@ -3,11 +3,11 @@ info:
   title: "Wutsi Story Similarity Model"
   description: |
     Machine Learning Model for finding similarities between stories.
-    Story similarity is computed based on:
-    - Title
-    - Topic
-    - Tags
-    - Author
+    Story similarity based on the [Jaro Winkler Distance](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) computed using the following attributed:
+      - Topic
+      - Tags
+      - Title
+      - Author
   version: "1.0.0"
 
 servers:
