@@ -11,9 +11,9 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: https://similarity-test.herokuapp.com
+  - url: https://wutsi-similarity-test.herokuapp.com
     description: Sandbox
-  - url: https://similarity-prod.herokuapp.com
+  - url: https://wutsi-similarity-prod.herokuapp.com
     description: Production
 
 paths:
