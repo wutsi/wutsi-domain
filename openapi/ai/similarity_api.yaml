@@ -11,13 +11,13 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: https://story-similarity-model-test.herokuapp.com
+  - url: https://similarity-test.herokuapp.com
     description: Sandbox
-  - url: https://story-similarity-model-prod.herokuapp.com
+  - url: https://similarity-prod.herokuapp.com
     description: Production
 
 paths:
-  /v1/stories/{id}/similarities:
+  /v1/similarities/stories/{id}:
     get:
       operationId: "get"
       summary: "Return similar Stories"
@@ -33,6 +33,7 @@ paths:
           name: limit
           schema:
             type: integer
+            default: 10
       responses:
         200:
           description: Success
