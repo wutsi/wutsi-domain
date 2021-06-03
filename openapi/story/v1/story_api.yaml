@@ -44,6 +44,18 @@ paths:
       summary: "Return the published stories"
       parameters:
         - in: query
+          name: start-date
+          schema:
+            type: string
+            format: date
+            nullable: true
+        - in: query
+          name: end-date
+          schema:
+            type: string
+            format: date
+            nullable: true
+        - in: query
           name: limit
           required: true
           schema:
