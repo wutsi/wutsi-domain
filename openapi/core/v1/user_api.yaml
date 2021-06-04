@@ -43,7 +43,7 @@ paths:
         - User
 
   /v1/users/{id}:
-    post:
+    get:
       operationId: "get-user"
       summary: "Return user information"
       parameters:
