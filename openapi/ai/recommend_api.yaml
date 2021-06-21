@@ -1,0 +1,60 @@
+openapi: "3.0.0"
+info:
+  title: "Wutsi Recommendation API"
+  description: |
+    Recommendation API
+  version: "1.0.0"
+
+servers:
+  - url: https://wutsi-recommendation-test.herokuapp.com
+    description: Sandbox
+  - url: https://wutsi-recommendation-prod.herokuapp.com
+    description: Production
+
+paths:
+  /v1/recommendations/stories/{id}/similar:
+    get:
+      operationId: "get-similar-stories"
+      summary: "Return similar Stories"
+      description: |
+        The similar stories are returned with a similarity score.
+      parameters:
+        - in: path
+          name: id
+          description: ID of the Story for which we want to find similar stories
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: user-id
+          schema:
+            type: number
+            format: int64
+            nullable: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSimilarStoriesResponse'
+      tags:
+        - Story
+
+components:
+  schemas:
+    GetSimilarStoriesResponse:
+      type: object
+      properties:
+        storyIds:
+          description: List of similar stories order by their descending score
+          type: array
+          items:
+            type: integer
+            format: int64
