@@ -12,16 +12,79 @@ servers:
     description: Production
 
 paths:
-  /v1/recommendations/stories/{id}/similar:
-    get:
-      operationId: "get-similar-stories"
-      summary: "Return similar Stories"
+  /v1/recommendations/feeds/stories:
+    post:
+      operationId: "create-story-feed"
+      summary: Create the Story CSV
       description: |
-        The similar stories are returned with a similarity score.
+        Create the Story CSV feed, that will be used for training the AI model
+        The format of the CSV file:
+        - story_id: ID of the product
+        - categories: Topic, Sub-Topic, and tags. All separated by `|`
+        - language: Story language
+        - published_date: Published date/time as epoc time.
       parameters:
         - in: path
-          name: id
-          description: ID of the Story for which we want to find similar stories
+          name: site-id
+          description: ID of the Site
+          required: true
+          schema:
+            type: number
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFeedResponse'
+      security:
+        - api_key: [ 'recommend-manage' ]
+      tags:
+        - Feeds
+
+  /v1/recommendations/feeds/interactions:
+    post:
+      operationId: "create-interaction-feed"
+      summary: Create teh user interaction feed
+      description: |
+        Create the Story CSV feed, that will be used for training the AI model
+        The format of the CSV file:
+        - story_id: ID of the product
+        - user_id: ID of the user
+        - event_type: Type of event
+        - event_value: Value of the event
+        - device: Type of device: desktop, mobile, tablet
+        - medium: Type of medium: mail, web
+        - timestamp: interaction timestamp
+      parameters:
+        - in: path
+          name: site-id
+          description: ID of the Site
+          required: true
+          schema:
+            type: number
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFeedResponse'
+      security:
+        - api_key: [ 'recommend-manage' ]
+      tags:
+        - Feeds
+
+  /v1/recommendations/similar:
+    get:
+      operationId: "get-similar"
+      summary: "Return similar products"
+      parameters:
+        - in: path
+          name: product-id
+          description: ID of the Product for which we want to find similar products
           required: true
           schema:
             type: integer
@@ -43,18 +106,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSimilarStoriesResponse'
+                $ref: '#/components/schemas/CreateFeedResponse'
+      security:
+        - api_key: [ 'recommend-read' ]
       tags:
-        - Story
+        - Recommendation
+
 
 components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+
   schemas:
-    GetSimilarStoriesResponse:
+    GetSimilarProductsResponse:
       type: object
       properties:
-        storyIds:
-          description: List of similar stories order by their descending score
+        productIds:
+          description: ID of the similar products, sorted from most similar to least similar
           type: array
           items:
-            type: integer
+            type: number
             format: int64
+
+    CreateFeedResponse:
+      type: object
+      properties:
+        feedUrl:
+          description: URL of the CSV file generated
+          type: string
