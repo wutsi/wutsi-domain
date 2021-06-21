@@ -203,6 +203,7 @@ components:
         parentId:
           type: integer
           format: int64
+          nullable: true
         name:
           type: string
 
