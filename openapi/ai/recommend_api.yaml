@@ -22,14 +22,14 @@ paths:
         - story_id: ID of the product
         - categories: Topic, Sub-Topic, and tags. All separated by `|`
         - language: Story language
-        - published_date: Published date/time as epoc time.
+        - timestamp: Published date/time as epoc time.
       parameters:
         - in: path
           name: site-id
           description: ID of the Site
           required: true
           schema:
-            type: number
+            type: integer
             format: int64
       responses:
         200:
@@ -63,7 +63,7 @@ paths:
           description: ID of the Site
           required: true
           schema:
-            type: number
+            type: integer
             format: int64
       responses:
         200:
@@ -92,7 +92,7 @@ paths:
         - in: query
           name: user-id
           schema:
-            type: number
+            type: integer
             format: int64
             nullable: true
         - in: query
@@ -128,7 +128,7 @@ components:
           description: ID of the similar products, sorted from most similar to least similar
           type: array
           items:
-            type: number
+            type: integer
             format: int64
 
     CreateFeedResponse:
