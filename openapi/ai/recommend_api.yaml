@@ -13,7 +13,7 @@ servers:
 
 paths:
   /v1/recommendations/feeds/stories:
-    post:
+    get:
       operationId: "create-story-feed"
       summary: Create the Story CSV
       description: |
@@ -24,7 +24,7 @@ paths:
         - language: Story language
         - timestamp: Published date/time as epoc time.
       parameters:
-        - in: path
+        - in: query
           name: site-id
           description: ID of the Site
           required: true
@@ -44,7 +44,7 @@ paths:
         - Feeds
 
   /v1/recommendations/feeds/interactions:
-    post:
+    get:
       operationId: "create-interaction-feed"
       summary: Create teh user interaction feed
       description: |
@@ -58,7 +58,7 @@ paths:
         - medium: Type of medium: mail, web
         - timestamp: interaction timestamp
       parameters:
-        - in: path
+        - in: query
           name: site-id
           description: ID of the Site
           required: true
@@ -82,7 +82,7 @@ paths:
       operationId: "get-similar"
       summary: "Return similar products"
       parameters:
-        - in: path
+        - in: query
           name: product-id
           description: ID of the Product for which we want to find similar products
           required: true
