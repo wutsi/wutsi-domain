@@ -176,7 +176,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Tag"
-        type:
+        topic:
           type: object
           $ref: "#/components/schemas/Topic"
 
