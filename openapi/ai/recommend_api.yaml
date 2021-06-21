@@ -6,9 +6,9 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: https://wutsi-recommendation-test.herokuapp.com
+  - url: https://wutsi-recommend-test.herokuapp.com
     description: Sandbox
-  - url: https://wutsi-recommendation-prod.herokuapp.com
+  - url: https://wutsi-recommend-prod.herokuapp.com
     description: Production
 
 paths:
