@@ -44,6 +44,12 @@ paths:
       summary: "Return the published stories"
       parameters:
         - in: query
+          name: site-id
+          schema:
+            type: number
+            format: int64
+            default: 1
+        - in: query
           name: start-date
           schema:
             type: string
