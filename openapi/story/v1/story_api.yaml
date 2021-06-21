@@ -83,8 +83,44 @@ paths:
       tags:
         - Story
 
+
+  /v1/topics:
+    get:
+      operationId: "topic"
+      summary: "Return all the topics"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchTopicResponse'
+      tags:
+        - Topic
+
 components:
   schemas:
+    SearchTopicResponse:
+      type: object
+      properties:
+        story:
+          type: array
+          items:
+            $ref: "#/components/schemas/Topic"
+
+    Topic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        parentId:
+          type: integer
+          format: int64
+        name:
+          type: string
+
+
     GetStoryResponse:
       type: object
       properties:
@@ -146,7 +182,27 @@ components:
             - `PUBLIC`: Accessible by everyone
             - `SUBSCRIBER`: Accessible only the blog subscriber
             - `PREMIUM_SUBSCRIBER`: Accessible only on subscriber who paid their subscription
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"
+        type:
+          type: object
+          $ref: "#/components/schemas/Topic"
 
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+        totalStories:
+          type: integer
+          format: int64
 
     SearchStoryResponse:
       type: object
