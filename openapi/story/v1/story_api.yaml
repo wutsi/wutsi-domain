@@ -136,6 +136,8 @@ components:
           type: string
           example: "This is the story of my life"
           description: "Description of the Story"
+        language:
+          type: string
         tagLine:
           type: string
           example: "It's all about the journey, not the destination"
@@ -232,6 +234,8 @@ components:
           type: string
           example: "This is the story of my life"
           description: "Description of the Story"
+        language:
+          type: string
         tagLine:
           type: string
           example: "It's all about the journey, not the destination"
