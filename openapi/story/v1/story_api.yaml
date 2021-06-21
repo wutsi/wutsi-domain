@@ -86,7 +86,7 @@ paths:
 
   /v1/topics:
     get:
-      operationId: "topic"
+      operationId: "topics"
       summary: "Return all the topics"
       responses:
         200:
@@ -103,7 +103,7 @@ components:
     SearchTopicResponse:
       type: object
       properties:
-        story:
+        topics:
           type: array
           items:
             $ref: "#/components/schemas/Topic"
