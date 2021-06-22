@@ -113,6 +113,11 @@ components:
         userId:
           type: integer
           format: int64
+        storyIds:
+          type: array
+          items:
+            type: integer
+            format: int64
         deviceId:
           type: string
           nullable: true
@@ -122,11 +127,9 @@ components:
         deviceType:
           type: string
           nullable: true
-        storyIds:
-          type: array
-          items:
-            type: integer
-            format: int64
+        limit:
+          type: integer
+          default: 10
 
     RankStoriesResponse:
       type: object
