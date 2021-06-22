@@ -76,36 +76,23 @@ paths:
       tags:
         - Feeds
 
-  /v1/recommendations/similar:
-    get:
-      operationId: "get-similar"
-      summary: "Return similar products"
-      parameters:
-        - in: query
-          name: product-id
-          description: ID of the Product for which we want to find similar products
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - in: query
-          name: user-id
-          schema:
-            type: integer
-            format: int64
-            nullable: true
-        - in: query
-          name: limit
-          schema:
-            type: integer
-            default: 10
+  /v1/recommendations/rank:
+    post:
+      operationId: "rank"
+      summary: "Rank stories"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RankStoriesRequest'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateFeedResponse'
+                $ref: '#/components/schemas/RankStoriesResponse'
       security:
         - api_key: [ 'recommend-read' ]
       tags:
@@ -120,15 +107,36 @@ components:
       name: Authorization
 
   schemas:
-    GetSimilarProductsResponse:
+    RankStoriesRequest:
       type: object
       properties:
-        productIds:
-          description: ID of the similar products, sorted from most similar to least similar
+        userId:
+          type: integer
+          format: int64
+        deviceId:
+          type: string
+          nullable: true
+        traffic:
+          type: string
+          nullable: true
+        deviceType:
+          type: string
+          nullable: true
+        storyIds:
           type: array
           items:
             type: integer
             format: int64
+
+    RankStoriesResponse:
+      type: object
+      properties:
+        storyIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+
 
     CreateFeedResponse:
       type: object
