@@ -1,142 +1,53 @@
 openapi: "3.0.0"
 info:
   title: "Wutsi Like API"
-  description: This api used for managing likes on links
+  description: This api used for managing likes on Stories
   version: "1.0.0"
 
 servers:
-  - url: https://wutsi-like-service-test.herokuapp.com
+  - url: https://int-com-wutsi-blog.herokuapp.com
     description: Sandbox
-  - url: https://wutsi-like-service-prod.herokuapp.com
-    description: Sandbox
+  - url: https://com-wutsi-blog.herokuapp.com
+    description: Production
 
 paths:
   /v1/likes:
-    post:
-      operationId: "create"
-      summary: "Submit a Like request"
-      description: |
-        This operation is invoked whenever the user interacts with the Like button.
-        - The first time the user clicks the `Like` button, it means he liked the link
-        - The next time the user will click on the `Like` button, it means he unliked the link
-        - If the user clicks a third time, it means he liked the link
-        - etc.
-        After the site is created, the event `urn:event:wutsi:like:liked` will be fired.
-
-      requestBody:
-        description: Like request
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateLikeRequest'
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLikeResponse"
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      security:
-        - api_key: []
-      tags:
-        - Like
-
-  /v1/likes/stats:
     get:
-      operationId: "stats"
-      summary: "Returns the Like statistics of a link"
+      operationId: "search"
+      summary: "Search Likes"
       parameters:
         - in: query
-          name: canonical_url
+          name: limit
           required: true
           schema:
-            type: string
-            nullable: false
+            type: integer
+            format: int32
         - in: query
-          name: user_id
+          name: offset
+          required: true
           schema:
             type: integer
-            format: int64
-            nullable: true
-        - in: query
-          name: device_uuid
-          schema:
-            type: string
-            nullable: true
+            format: int32
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetStatsResponse'
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      security:
-        - api_key: []
+                $ref: "#/components/schemas/SearchLikeResponse"
       tags:
         - Like
+
 
 components:
   schemas:
-    CreateLikeRequest:
+    SearchLikeResponse:
       type: object
       properties:
-        canonicalUrl:
-          type: string
-          format: uri
-        deviceUUID:
-          type: string
-          format: uuid
-          nullable: true
-        userId:
-          type: integer
-          format: int64
-          nullable: true
-        likeDateTime:
-          type: string
-          format: date-time
-          nullable: true
-      required:
-        - canonicalUrl
-
-    CreateLikeResponse:
-      type: object
-      properties:
-        likeId:
-          type: integer
-          format: int64
-          nullable: false
-          example: 1
-
-    GetStatsResponse:
-      type: object
-      properties:
-        canonicalUrl:
-          type: string
-          format: uri
-          description: canonical URL of the link
-          example: "https://www.foo.com/read/123"
-        count:
-          type: number
-          format: int64
-          description: Number of likes on the link
-          example: 1500
-        liked:
-          type: boolean
-          description: true if the user or device has liked the link
-          example: true
+        likes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Like"
 
     Like:
       type: object
@@ -144,34 +55,17 @@ components:
         id:
           type: integer
           format: int64
-          nullable: false
-          example: 11
-        canonicalUrl:
-          type: string
-          format: uri
-          nullable: false
-          example: "https://www.foo.com/read/123"
+        storyId:
+          type: integer
+          format: int64
         userId:
           type: integer
           format: int64
           nullable: true
-          example: 1
-        deviceUUID:
+        deviceId:
           type: string
-          format: uuid
           nullable: true
-          example: "8e976869-2b06-407b-95ea-9e69da162a0c"
         likeDateTime:
-          type: string
-          format: date-time
-          nullable: false
-          example: "2017-07-21T17:32:28Z"
+          type: integer
+          format: int64
 
-    ErrorResponse:
-      $ref: "../../common/v1/ErrorResponse.yaml"
-
-  securitySchemes:
-    api_key:
-      type: apiKey
-      in: header
-      name: x-wutsi-api-key
