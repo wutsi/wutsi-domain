@@ -111,13 +111,11 @@ components:
       type: object
       properties:
         userId:
-          type: integer
-          format: int64
+          type: string
         storyIds:
           type: array
           items:
-            type: integer
-            format: int64
+            type: string
         deviceId:
           type: string
           nullable: true
@@ -137,8 +135,7 @@ components:
         storyIds:
           type: array
           items:
-            type: integer
-            format: int64
+            type: string
 
 
     CreateFeedResponse:
