@@ -495,6 +495,8 @@ components:
         traffic:
           type: string
           nullable: true
+        readTimeSeconds:
+          type: integer
 
 
     SearchStoryKpiResponse:

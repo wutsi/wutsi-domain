@@ -17,12 +17,12 @@ paths:
       operationId: "create-story-feed"
       summary: Create the Story CSV
       description: |
-        Create the Story CSV feed, that will be used for training the AI model
-        The format of the CSV file:
-        - story_id: ID of the product
-        - categories: Topic, Sub-Topic, and tags. All separated by `|`
-        - language: Story language
-        - timestamp: Published date/time as epoc time.
+        Create the Story CSV feed, that will be used for training the AI model.
+        Here is the schema of the CSV file:
+        - ITEM_ID: ID of the story
+        - CATEGORIES: List of topic and tags, separated by `|`
+        - LANGUAGE: Story language
+        - CREATION_TIMESTAMP: Publish timestamp
       parameters:
         - in: query
           name: site-id
@@ -49,14 +49,13 @@ paths:
       summary: Create teh user interaction feed
       description: |
         Create the Story CSV feed, that will be used for training the AI model
-        The format of the CSV file:
-        - story_id: ID of the product
-        - user_id: ID of the user
-        - event_type: Type of event
-        - event_value: Value of the event
-        - device: Type of device: desktop, mobile, tablet
-        - medium: Type of medium: mail, web
-        - timestamp: interaction timestamp
+        Here is the schema of the CSV file:
+        - ITEM_ID: ID of the story
+        - USER_ID: ID of the user
+        - EVENT_TYPE: Type of event
+        - EVENT_VALUE: Value of the event
+        - SOURCE: Place where the event occured (desktop, mobile, tabblet)
+        - TIMESTAMP: interaction timestamp
       parameters:
         - in: query
           name: site-id
