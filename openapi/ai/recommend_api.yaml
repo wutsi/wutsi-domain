@@ -54,7 +54,7 @@ paths:
         - USER_ID: ID of the user
         - EVENT_TYPE: Type of event
         - EVENT_VALUE: Value of the event
-        - SOURCE: Place where the event occured (desktop, mobile, tabblet)
+        - TRAFFIC: Type of traffic
         - TIMESTAMP: interaction timestamp
       parameters:
         - in: query
