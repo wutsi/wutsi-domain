@@ -112,13 +112,14 @@ components:
       properties:
         userId:
           type: string
+          nullable: true
+        deviceId:
+          type: string
+          nullable: true
         storyIds:
           type: array
           items:
             type: string
-        deviceId:
-          type: string
-          nullable: true
         traffic:
           type: string
           nullable: true
