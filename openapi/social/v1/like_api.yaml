@@ -48,7 +48,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int65
+            format: int64
       responses:
         200:
           description: Success
