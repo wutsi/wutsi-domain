@@ -73,8 +73,8 @@ components:
     GetCommentResponse:
       type: object
       properties:
-        comments:
-          type: item
+        comment:
+          type: object
           $ref: "#/components/schemas/Comment"
 
     Comment:

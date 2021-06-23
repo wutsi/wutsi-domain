@@ -38,6 +38,26 @@ paths:
       tags:
         - Like
 
+  /v1/likes/{id}:
+    get:
+      operationId: "get"
+      summary: "Get a Like"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int65
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetLikeResponse"
+      tags:
+        - Like
 
 components:
   schemas:
@@ -48,6 +68,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Like"
+
+    GetLikeResponse:
+      type: object
+      properties:
+        like:
+          type: object
+          $ref: "#/components/schemas/Like"
 
     Like:
       type: object
