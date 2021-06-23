@@ -38,6 +38,27 @@ paths:
       tags:
         - Comment
 
+  /v1/comments/{id}:
+    get:
+      operationId: "get"
+      summary: "Return a comment"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCommentResponse"
+      tags:
+        - Comment
+
 
 components:
   schemas:
@@ -48,6 +69,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Comment"
+
+    GetCommentResponse:
+      type: object
+      properties:
+        comments:
+          type: item
+          $ref: "#/components/schemas/Comment"
 
     Comment:
       type: object

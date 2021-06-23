@@ -125,9 +125,6 @@ components:
         deviceType:
           type: string
           nullable: true
-        limit:
-          type: integer
-          default: 10
 
     RankStoriesResponse:
       type: object
