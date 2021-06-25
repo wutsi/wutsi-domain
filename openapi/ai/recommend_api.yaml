@@ -18,11 +18,6 @@ paths:
       summary: Create the Story CSV
       description: |
         Create the Story CSV feed, that will be used for training the AI model.
-        Here is the schema of the CSV file:
-        - ITEM_ID: ID of the story
-        - CATEGORIES: List of topic and tags, separated by `|`
-        - LANGUAGE: Story language
-        - CREATION_TIMESTAMP: Publish timestamp
       parameters:
         - in: query
           name: site-id
@@ -43,19 +38,34 @@ paths:
       tags:
         - Feeds
 
+  /v1/recommendations/feeds/sync:
+    get:
+      operationId: "sync-story-feed"
+      summary: Syncronize the Stories.
+      description: |
+        Push all stories to the AI model
+      parameters:
+        - in: query
+          name: site-id
+          description: ID of the Site
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+      security:
+        - api_key: [ 'recommend-manage' ]
+      tags:
+        - Feeds
+
   /v1/recommendations/feeds/interactions:
     get:
       operationId: "create-interaction-feed"
       summary: Create teh user interaction feed
       description: |
-        Create the Story CSV feed, that will be used for training the AI model
-        Here is the schema of the CSV file:
-        - ITEM_ID: ID of the story
-        - USER_ID: ID of the user
-        - EVENT_TYPE: Type of event
-        - EVENT_VALUE: Value of the event
-        - TRAFFIC: Type of traffic
-        - TIMESTAMP: interaction timestamp
+        Create the Story CSV feed, that will be used for training the AI model.
       parameters:
         - in: query
           name: site-id
@@ -75,6 +85,28 @@ paths:
         - api_key: [ 'recommend-manage' ]
       tags:
         - Feeds
+
+  /v1/recommendations/suggest:
+    post:
+      operationId: "suggest"
+      summary: "Suggest stories"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuggestStoriesRequest'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestStoriesResponse'
+      security:
+        - api_key: [ 'recommend-read' ]
+      tags:
+        - Recommendation
 
   /v1/recommendations/rank:
     post:
@@ -99,6 +131,7 @@ paths:
         - Recommendation
 
 
+
 components:
   securitySchemes:
     api_key:
@@ -107,6 +140,34 @@ components:
       name: Authorization
 
   schemas:
+    SuggestStoriesRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          nullable: true
+        deviceId:
+          type: string
+          nullable: true
+        traffic:
+          type: string
+          nullable: true
+        deviceType:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+
+    SuggestStoriesResponse:
+      type: object
+      properties:
+        storyIds:
+          type: array
+          items:
+            type: string
+
+
     RankStoriesRequest:
       type: object
       properties:
@@ -124,6 +185,9 @@ components:
           type: string
           nullable: true
         deviceType:
+          type: string
+          nullable: true
+        language:
           type: string
           nullable: true
 
