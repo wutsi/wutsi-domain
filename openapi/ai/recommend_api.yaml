@@ -38,12 +38,12 @@ paths:
       tags:
         - Feeds
 
-  /v1/recommendations/feeds/sync:
+  /v1/recommendations/sync:
     get:
-      operationId: "sync-story-feed"
-      summary: Syncronize the Stories.
+      operationId: "sync"
+      summary: Syncronize the recommendation engine with latest data
       description: |
-        Push all stories to the AI model
+        Syncronize the recommendation engine with latest data
       parameters:
         - in: query
           name: site-id
