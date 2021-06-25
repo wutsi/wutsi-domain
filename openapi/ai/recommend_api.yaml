@@ -58,7 +58,7 @@ paths:
       security:
         - api_key: [ 'recommend-manage' ]
       tags:
-        - Feeds
+        - Sync
 
   /v1/recommendations/feeds/interactions:
     get:
