@@ -111,4 +111,13 @@ components:
           type: string
           nullable: true
           description: "URL where the event was fired"
+        siteid:
+          type: string
+          nullable: true
+          description: "ID of the Site where the event was fired"
+        impressions:
+          type: string
+          nullable: true
+          description: "ID if the products printed with this event"
+
 
