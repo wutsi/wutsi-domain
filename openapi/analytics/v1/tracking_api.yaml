@@ -118,6 +118,6 @@ components:
         impressions:
           type: string
           nullable: true
-          description: "ID if the products printed with this event"
+          description: "ID if the products printed with this event, separated by |"
 
 
