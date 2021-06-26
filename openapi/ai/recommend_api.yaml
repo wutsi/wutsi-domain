@@ -86,27 +86,7 @@ paths:
       tags:
         - Feeds
 
-  /v1/recommendations/similar:
-    post:
-      operationId: "similar"
-      summary: "Return similar stories"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SimilarStoriesRequest'
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SimilarStoriesResponse'
-      security:
-        - api_key: [ 'recommend-read' ]
-      tags:
-        - Recommendation
+
 
   /v1/recommendations/suggest:
     post:
@@ -162,44 +142,13 @@ components:
       name: Authorization
 
   schemas:
-    SimilarStoriesRequest:
+    SuggestStoriesRequest:
       type: object
       properties:
         userId:
           type: string
           nullable: true
         storyId:
-          type: string
-        deviceId:
-          type: string
-          nullable: true
-        traffic:
-          type: string
-          nullable: true
-        deviceType:
-          type: string
-          nullable: true
-        language:
-          type: string
-          nullable: true
-        limit:
-          type: integer
-          default: 20
-      required:
-        - storyId
-
-    SimilarStoriesResponse:
-      type: object
-      properties:
-        storyIds:
-          type: array
-          items:
-            type: string
-
-    SuggestStoriesRequest:
-      type: object
-      properties:
-        userId:
           type: string
           nullable: true
         deviceId:
