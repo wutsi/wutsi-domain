@@ -26,6 +26,13 @@ paths:
           schema:
             type: integer
             format: int64
+        - in: query
+          name: version
+          description: Version of the feed schemas
+          schema:
+            type: integer
+            format: int64
+            nullable: true
       responses:
         200:
           description: Success
@@ -37,6 +44,40 @@ paths:
         - api_key: [ 'recommend-manage' ]
       tags:
         - Feeds
+
+  /v1/recommendations/feeds/interactions:
+    get:
+      operationId: "create-interaction-feed"
+      summary: Create teh user interaction feed
+      description: |
+        Create the Story CSV feed, that will be used for training the AI model.
+      parameters:
+        - in: query
+          name: site-id
+          description: ID of the Site
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: version
+          description: Version of the feed schemas
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFeedResponse'
+      security:
+        - api_key: [ 'recommend-manage' ]
+      tags:
+        - Feeds
+
 
   /v1/recommendations/sync:
     get:
@@ -59,34 +100,6 @@ paths:
         - api_key: [ 'recommend-manage' ]
       tags:
         - Sync
-
-  /v1/recommendations/feeds/interactions:
-    get:
-      operationId: "create-interaction-feed"
-      summary: Create teh user interaction feed
-      description: |
-        Create the Story CSV feed, that will be used for training the AI model.
-      parameters:
-        - in: query
-          name: site-id
-          description: ID of the Site
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateFeedResponse'
-      security:
-        - api_key: [ 'recommend-manage' ]
-      tags:
-        - Feeds
-
-
 
   /v1/recommendations/suggest:
     post:
