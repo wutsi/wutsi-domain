@@ -30,8 +30,7 @@ paths:
           name: version
           description: Version of the feed schemas
           schema:
-            type: integer
-            format: int64
+            type: string
             nullable: true
       responses:
         200:
@@ -63,8 +62,7 @@ paths:
           name: version
           description: Version of the feed schemas
           schema:
-            type: integer
-            format: int64
+            type: string
             nullable: true
       responses:
         200:
