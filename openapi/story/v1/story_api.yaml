@@ -38,6 +38,35 @@ paths:
       tags:
         - Story
 
+  /v1/story/{id}/translate:
+    get:
+      operationId: "get"
+      summary: "Return the information of a story in a given language"
+      parameters:
+        - in: path
+          name: id
+          description: ID of the site
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: language
+          description: |
+            Target language in the format ISO 639-1. Ex: `fr`, `en`
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslateStoryResponse'
+      tags:
+        - Story
+
   /v1/stories/published:
     get:
       operationId: "published"
@@ -108,8 +137,14 @@ components:
           items:
             $ref: "#/components/schemas/Topic"
 
-
     GetStoryResponse:
+      type: object
+      properties:
+        story:
+          type: object
+          $ref: "#/components/schemas/Story"
+
+    TranslateStoryResponse:
       type: object
       properties:
         story:
