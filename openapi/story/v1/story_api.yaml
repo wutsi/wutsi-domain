@@ -40,7 +40,7 @@ paths:
 
   /v1/story/{id}/translate:
     get:
-      operationId: "get"
+      operationId: "translate"
       summary: "Return the information of a story in a given language"
       parameters:
         - in: path
